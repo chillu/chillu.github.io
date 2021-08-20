@@ -7,11 +7,11 @@ export default function Post(props) {
     return (
         <Layout>
             <main>
-                <h1>{props.data.title}</h1>
-                <p>{format(parseISO(props.data.date), 'yyyy-MM-dd')}</p>
-                <div class="prose">
+                <article className="prose">
+                    <h1>{props.data.title}</h1>
+                    <p>{format(parseISO(props.data.date), 'yyyy-MM-dd')}</p>
                     <ReactMarkdown children={props.content} />
-                </div>
+                </article>
             </main>
         </Layout>
     );
@@ -20,7 +20,6 @@ export default function Post(props) {
 export async function getStaticProps({ params: { slug } }) {
     const filePath = getPathBySlug(slug);
     const data = getPostData(filePath);
-    console.log(data);
     return {
         props: data
     };
