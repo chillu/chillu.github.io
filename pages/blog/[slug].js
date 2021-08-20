@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import { getPostData, getPathBySlug, getPostPaths } from '../../utils/post';
 
@@ -5,7 +7,11 @@ export default function Post(props) {
     return (
         <Layout>
             <main>
-                {props.content}
+                <h1>{props.data.title}</h1>
+                <p>{format(parseISO(props.data.date), 'yyyy-MM-dd')}</p>
+                <div class="prose">
+                    <ReactMarkdown children={props.content} />
+                </div>
             </main>
         </Layout>
     );
@@ -13,9 +19,10 @@ export default function Post(props) {
 
 export async function getStaticProps({ params: { slug } }) {
     const filePath = getPathBySlug(slug);
-    console.log(filePath);
+    const data = getPostData(filePath);
+    console.log(data);
     return {
-        props: getPostData(filePath)
+        props: data
     };
 };
 
