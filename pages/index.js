@@ -21,7 +21,20 @@ export default function Home({ posts }) {
           wrangling technologies and teams.
         </p>
 
-        
+        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
+          {posts.map(post => (
+            <a
+              href="#"
+              className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
+              key={post.slug}
+            >
+              <h3 className="text-2xl font-bold">{post.data.title} &rarr;</h3>
+              <p className="mt-4 text-xl">
+                {post.data.summary}
+              </p>
+            </a>
+          ))}
+        </div>
       </main>
     </Layout>
   )
