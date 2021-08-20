@@ -1,9 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/Layout';
-import { getPostPaths } from '../utils/getPostInfo';
-import matter from 'gray-matter';
-import fs from 'fs';
-import path from 'path';
+import { getPostPaths, getPostData } from '../utils/post';
 
 export default function Home({ posts }) {
   return (
@@ -24,7 +21,7 @@ export default function Home({ posts }) {
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
           {posts.map(post => (
             <a
-              href="#"
+              href={post.url}
               className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
               key={post.slug}
             >
@@ -41,20 +38,7 @@ export default function Home({ posts }) {
 }
 
 export function getStaticProps() {
-  const posts = getPostPaths().map(({slug, filePath}) => {
-    const source = fs.readFileSync(filePath);
-    const { data, content } = matter(source);
-    return {
-      slug,
-      data: {
-        ...data,
-        // https://github.com/vercel/next.js/discussions/11498
-        date: data.date ? JSON.stringify(data.date) : null,
-        summary: data.summary ?? content.slice(0, 200)
-      },
-      content
-    };
-  });
+  const posts = getPostPaths().map((filePath) => getPostData(filePath));
   return {
     props: {
       posts
