@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function Layout(props) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-white">
         <Head>
           <title>chillu.com - Ingo Schommer</title>
           <link rel="icon" href="/favicon.ico" />
