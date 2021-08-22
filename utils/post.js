@@ -27,7 +27,7 @@ export function getPostData(filePath, parse = true) {
     data: {
       ...data,
       // https://github.com/vercel/next.js/discussions/11498
-      date: data.date ? JSON.stringify(data.date) : null,
+      date: data.date ? data.date.toISOString() : null,
       summary: data.summary ?? content.slice(0, 200) + '...'
     },
     content
