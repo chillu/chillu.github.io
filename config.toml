@@ -6,9 +6,9 @@ theme = "hugo-coder"
 author = "Ingo Schommer"
 description = "Ingo Schommer's personal website"
 keywords = "blog,developer,personal"
-info = ["Full Stack DevOps", "Magician"]
+info = ["Passionate about product, people and data." ]
 avatarURL = "images/avatar.jpg"
-footerContent = "Enter a text here."
+footerContent = ""
 hideCopyright = true
 since = 2005
 colorScheme = "dark"
@@ -62,10 +62,10 @@ type = "application/rss+xml"
 [languages.en]
 languageName = ":uk:"
 
-[[languages.en.menu.main]]
-name = "About"
-weight = 1
-url = "about/"
+#[[languages.en.menu.main]]
+#name = "About"
+#weight = 1
+#url = "about/"
 
 [[languages.en.menu.main]]
 name = "Blog"
