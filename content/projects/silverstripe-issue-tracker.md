@@ -19,3 +19,5 @@ it is still in active use years later.
 
 Check out the [live application](http://silverstripe-issue-tracker.silverstripe.org/),
 and read more about the drivers on the [silverstripe.org announcement](https://www.silverstripe.org/blog/searching-silverstripe-issues-just-got-a-lot-easier/).
+I've also held a [lightning talk](https://www.youtube.com/watch?v=2BAs0DeFnoI) about this tool at
+Stripecon Malta in 2017.
