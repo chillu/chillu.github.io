@@ -2,6 +2,7 @@
 title: "A better security classification for supported modules"
 date: "2019-04-17"
 draft: false
+tags: ["silverstripe", "security"]
 ---
 
 *Originally posted on silverstripe.org*

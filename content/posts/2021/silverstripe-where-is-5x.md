@@ -2,6 +2,7 @@
 title: "Silverstripe CMS: Where is 5.x, or how to innovate on a monolith"
 date: "2021-02-10"
 draft: false
+tags: ["silverstripe"]
 ---
 
 *Originally posted on silverstripe.org*

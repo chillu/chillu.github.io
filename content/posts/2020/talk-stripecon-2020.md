@@ -2,6 +2,7 @@
 title: "Talk: StripeCon 2020 - Github Issue Relevancy Predictions"
 date: "2021-01-01"
 draft: false
+tags: ["python", "machinelearning", "data"]
 ---
 
 Machine learning experiment, creating personalised predictions using Fast.AI, Pytorch, Pandas, Flask (Python).

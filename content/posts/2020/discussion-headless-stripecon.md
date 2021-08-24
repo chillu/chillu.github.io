@@ -2,6 +2,7 @@
 title: "Panel Discussion: Headless, GraphQL and Content First (Stripecon EU)"
 date: "2020-10-01"
 draft: false
+tags: ["silverstripe", "headless"]
 ---
 
 Facilitated an interesting discussion with the Silverstripe community

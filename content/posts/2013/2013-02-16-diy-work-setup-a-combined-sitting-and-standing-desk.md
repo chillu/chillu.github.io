@@ -1,7 +1,7 @@
 ---
 date: "2013-02-16T19:44:00+00:00"
 draft: false
-tags: ["standing desk", "office", "work environment", "ergonomics"]
+tags: ["diy"]
 title: "DIY work setup: A combined sitting and standing desk"
 ---
 ![](/images/2013-02-16-diy-work-setup-a-combined-sitting-and-standing-desk/31dbe0df451d2006fdccaffc4949cc020970f718b1da707e75e4fd775a3dec94.jpg)

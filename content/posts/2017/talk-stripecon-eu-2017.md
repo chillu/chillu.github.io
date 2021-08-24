@@ -2,6 +2,7 @@
 title: "Talk: GraphQL in SilverStripe - Reasons and Demo App (Stripecon Malta 2017)"
 date: 2017-10-01
 draft: false
+tags: ["silverstripe", "react", "graphql", "serverless"]
 ---
 
 Talk at [Stripecon Malta](https://stripecon.eu) in 2017.

@@ -2,6 +2,7 @@
 date: "2012-04-22T19:01:00+00:00"
 draft: false
 title: "Photo post"
+tags: ["diy"]
 ---
 [image](/images/2012-04-22-photo-post/287a831e9d1702f794462f9ae2a818183e1538a622b58a87760a2c5767ea7fa1.jpg)
 

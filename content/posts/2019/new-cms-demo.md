@@ -2,6 +2,7 @@
 title: "New CMS demo for a better evaluator experience"
 date: "2019-11-07"
 draft: false
+tags: ["silverstripe", "product"]
 ---
 
 *Originally posted on silverstripe.org. I've been the Product Owner and Technical Lead on this project.*

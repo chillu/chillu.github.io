@@ -2,6 +2,7 @@
 title: "Headless CMS: The future of content delivery"
 date: "2018-01-24"
 draft: false
+tags: ["silverstripe", "headless"]
 ---
 
 *Originally posted on silverstripe.org*
