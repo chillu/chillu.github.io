@@ -11,6 +11,10 @@ avatarURL = "images/avatar.jpg"
 footerContent = "<a href=\"mailto:me@chillu.com\">Contact</a>"
 since = 2005
 colorScheme = "dark"
+# Custom CSS
+customCSS = [
+  "css/custom.css"
+]
 
 # If you want to implement a Content-Security-Policy, add this section
 [params.csp]
