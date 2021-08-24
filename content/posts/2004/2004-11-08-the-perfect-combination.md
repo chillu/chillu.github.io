@@ -3,8 +3,6 @@ date: "2004-11-08T03:56:00+00:00"
 draft: false
 title: "The perfect combination"
 ---
-![.](http://chillu.com/assets/blog_sundown1.jpg ".")
-
 Speaking of my WG-life: I’m was so damn lucky to get this room!
 Currently I’m bloggin this from my window-ledge with my wireless
 Powerbook, watching a beautyful clear sunset. At last germany isn’t

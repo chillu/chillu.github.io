@@ -3,8 +3,6 @@ date: "2006-03-22T05:07:00+00:00"
 draft: false
 title: "GTD, finally"
 ---
-![.](http://chillu.com/assets/blog_nextaction2_02.jpg ".")
-
 There are innumerous posts about
 [getting things done (GTD)](http://www.43folders.com/2004/09/08/getting-started-with-getting-things-done/),
 and I spent so much time reading them that I actually didn’t get

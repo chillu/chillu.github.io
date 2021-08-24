@@ -3,8 +3,6 @@ date: "2007-01-17T22:01:00+00:00"
 draft: false
 title: "Wodyauptu"
 ---
-![.](http://chillu.com/assets/blog_panorama_hataitai.jpg ".")
-
 ... eine typische Kiwi-Begrüßung, heißt in etwa “Wie gehts, was
 machst du so?” (“What are you up to?”) – und genau das will ich
 heute mal bloggen, es gibt genug zu erzählen.

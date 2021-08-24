@@ -3,8 +3,6 @@ date: "2005-09-14T00:49:00+00:00"
 draft: false
 title: "Was Chillu mit Varnnavikaarangal zu tun hat"
 ---
-![.](http://chillu.com/assets/Bild_2.png ".")
-
 Grade die “[Google Blogsearch](http://blogsearch.google.com)”
 ausprobiert, eitel wie man so ist mit dem Suchbegriff
 “[chillu](http://blogsearch.google.com/blogsearch?hl=de&q=chillu&btnG=Blogs+durchsuchen&filter=0&sa=N&start=0)”.
