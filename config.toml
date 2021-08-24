@@ -8,8 +8,7 @@ description = "Ingo Schommer's personal website"
 keywords = "blog,developer,personal"
 info = ["Passionate about product, people and data." ]
 avatarURL = "images/avatar.jpg"
-footerContent = ""
-hideCopyright = true
+footerContent = "<a href=\"mailto:me@chillu.com\">Contact</a>"
 since = 2005
 colorScheme = "dark"
 
