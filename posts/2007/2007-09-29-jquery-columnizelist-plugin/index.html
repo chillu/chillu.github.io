@@ -1,0 +1,279 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=color-scheme content="light dark">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+<meta name=author content="Ingo Schommer">
+<meta name=description content="I&rsquo;ve spent a rainy german saturday hacking away on my dusty ol' website. Because of the current layout without sidebars, I had to find an unobtrusive place for meta-information like tags or archive-links. Those chunks of information can grow quite large, so i decided to expand into length rather than height and go multi-column for longer lists. Before I fully understood the stony way that lay before me, I&rsquo;ve found an article on &ldquo;A List Apart&rdquo;-magazine outlining different ways to tackle this problem.">
+<meta name=keywords content="blog,developer,personal">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="JQuery columnizeList Plugin">
+<meta name=twitter:description content="I&rsquo;ve spent a rainy german saturday hacking away on my dusty ol' website. Because of the current layout without sidebars, I had to find an unobtrusive place for meta-information like tags or archive-links. Those chunks of information can grow quite large, so i decided to expand into length rather than height and go multi-column for longer lists. Before I fully understood the stony way that lay before me, I&rsquo;ve found an article on &ldquo;A List Apart&rdquo;-magazine outlining different ways to tackle this problem.">
+<meta property="og:title" content="JQuery columnizeList Plugin">
+<meta property="og:description" content="I&rsquo;ve spent a rainy german saturday hacking away on my dusty ol' website. Because of the current layout without sidebars, I had to find an unobtrusive place for meta-information like tags or archive-links. Those chunks of information can grow quite large, so i decided to expand into length rather than height and go multi-column for longer lists. Before I fully understood the stony way that lay before me, I&rsquo;ve found an article on &ldquo;A List Apart&rdquo;-magazine outlining different ways to tackle this problem.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.chillu.com/posts/2007/2007-09-29-jquery-columnizelist-plugin/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2007-09-29T13:40:00+00:00">
+<meta property="article:modified_time" content="2007-09-29T13:40:00+00:00">
+<title>
+JQuery columnizeList Plugin · chillu.com
+</title>
+<link rel=canonical href=http://www.chillu.com/posts/2007/2007-09-29-jquery-columnizelist-plugin/>
+<link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin>
+<link rel=stylesheet href=/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css integrity="sha256-cIaG+KuBdukdRPy+SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.aa883b9ce35a8ff4a2a5008619005175e842bb18a8a9f9cc2bbcf44dab2d91fa.css integrity="sha256-qog7nONaj/SipQCGGQBRdehCuxioqfnMK7z0Tastkfo=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/custom.css>
+<link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16>
+<link rel=apple-touch-icon href=/images/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.87.0">
+</head>
+<body class="preload-transitions colorscheme-dark">
+<div class=float-container>
+<a id=dark-mode-toggle class=colorscheme-toggle>
+<i class="fa fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+chillu.com
+</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle>
+<i class="fa fa-bars fa-fw" aria-hidden=true></i>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/posts/>Blog</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/projects/>Projects</a>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container post">
+<article>
+<header>
+<div class=post-title>
+<h1 class=title>
+<a class=title-link href=http://www.chillu.com/posts/2007/2007-09-29-jquery-columnizelist-plugin/>
+JQuery columnizeList Plugin
+</a>
+</h1>
+</div>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on>
+<i class="fa fa-calendar" aria-hidden=true></i>
+<time datetime=2007-09-29T13:40:00Z>
+September 29, 2007
+</time>
+</span>
+<span class=reading-time>
+<i class="fa fa-clock-o" aria-hidden=true></i>
+3-minute read
+</span>
+</div>
+</div>
+</header>
+<div>
+<p>I&rsquo;ve spent a rainy german saturday hacking away on my dusty ol'
+website. Because of the current layout without sidebars, I had to
+find an unobtrusive place for meta-information like tags or
+archive-links. Those chunks of information can grow quite large, so
+i decided to expand into length rather than height and go
+multi-column for longer lists. Before I fully understood the stony
+way that lay before me, I&rsquo;ve found an
+<a href=http://www.alistapart.com/articles/multicolumnlists>article</a> on
+&ldquo;A List Apart&rdquo;-magazine outlining different ways to tackle this
+problem. Because of lacking support for
+<a href=http://www.w3.org/TR/css3-multicol/>true multi-columns</a> we have
+to resort to some slightly hacky CSS, either floating or applying
+negative margins.</p>
+<p>My solution works with negative margins, but automatically applied
+through a <a href=http://www.jquery.com>JQuery</a>-plugin (see
+<a href=#demolist-example>example</a> below). It seems to be rather stable
+across browsers, but has the usual quirks of using CSS for
+something its not intended to perform - make sure to
+<a href=http://www.alistapart.com/articles/multicolumnlists>read about the CSS-limitations</a>
+of this method over at &ldquo;A List Apart&rdquo;. By the way, you can see this
+plugin in action through the &ldquo;archive&rdquo;-area at the top of this
+website</p>
+<h4 id=features>
+Features
+<a class=heading-link href=#features>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<ul>
+<li>Styling of ordered/unordered lists</li>
+<li>Configurable column-count and width</li>
+<li>Resize-friendly em-based sizing</li>
+<li>Easy restoring to &ldquo;non-column&rdquo; layout</li>
+<li>Automatic adjustment on DOM-modification of the list (Firefox
+only)</li>
+<li>Requirements: JQuery 1.2
+(<a href=http://docs.jquery.com/Downloading_jQuery>download</a>)</li>
+<li>Browser-Compatibility: Firefox 1.5+, IE6+, Safari 2</li>
+</ul>
+<h4 id=usage>
+Usage
+<a class=heading-link href=#usage>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>Just apply to any group of DOM-elements gathered by the amazing
+JQuery-selectors. The provided arguments are optional (these are
+the default values).</p>
+<pre><code>$('#demolist').columnizeList({cols:3,width:13,unit:'em'});
+</code></pre>
+<h4 id=example>
+Example
+<a class=heading-link href=#example>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<ul>
+<li><a href=#>float</a> / <a href=#>unfloat</a> (Lame! List-ordering is messed up)</li>
+<li><a href=#>columnizeList()</a> / <a href=#>uncolumnizeList()</a> (The real deal)</li>
+</ul>
+<ol>
+<li>harold (3550)</li>
+<li>horatio (1320)</li>
+<li>hitler (1120)</li>
+<li>henry (784)</li>
+<li>hector (358)</li>
+<li>haploid (315)</li>
+<li>hopping (50)</li>
+<li>herbert mulroney (44)</li>
+<li>hopscotching (29)</li>
+<li>hominibus (19)</li>
+<li>honkey (19)</li>
+<li>hermoine (18)</li>
+<li>hieronymus (13)</li>
+<li>halliburton (12)</li>
+<li>hummer (10)</li>
+<li>harlod (10)</li>
+<li>heironymious (9)</li>
+<li>hemorrhoids (7)</li>
+<li>hammersack (6)</li>
+</ol>
+<p>Just in case you&rsquo;re wondering: The demo-list consists of the most
+common fillers for the phrase
+<a href=http://tenser.typepad.com/tenser_said_the_tensor/2007/01/what_does_the_h.html>&ldquo;Jesus H Christ&rdquo;</a>
+;-)</p>
+<h4 id=sourcecode>
+Sourcecode
+<a class=heading-link href=#sourcecode>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<pre><code>/**
+ * Copyright (c) 2007 Ingo Schommer (www.chillu.com)
+ * Licensed under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * Splits a /-list into equal-sized columns.
+ * 
+ * Requirements: 
+ * 
+ * All list-elements need to have the same height.
+ * List has to be blocklevel
+ * 
+ * 
+ * Caution: margin-top/margin-left on  are overridden.
+ * Doesn't react to changes to the DOM, you need to call the function
+ * manually afterwards.
+ * 
+ * @see http://www.alistapart.com/articles/multicolumnlists
+ */
+jQuery.fn.columnizeList = function(settings){
+    settings = jQuery.extend({
+        cols: 3,
+        width: '13',
+        unit: 'em'
+    }, settings);
+    
+    var prevColNum = 0;
+    var size = $('li',this).size();
+    var computedColHeight = 0;
+    var baseFontSize = parseFloat($(this).css('font-size'));
+    $('li',this).each(function(i) {
+        var currentColNum = Math.floor(((i)/size) * settings.cols);
+        $(this).css('margin-left',(currentColNum*settings.width)+''+settings.unit);
+        if(prevColNum != currentColNum) {
+            $(this).css('margin-top','-'+(computedColHeight/baseFontSize)+'em');
+            computedColHeight = $(this).height();
+        } else {
+            $(this).css('margin-top','0');
+            computedColHeight += $(this).height();
+        }
+        prevColNum = currentColNum;
+    });
+
+    this.css('height',(size/settings.cols)*(parseFloat($('li:first',this).height())/baseFontSize)+'em');
+    this.after('');
+    
+    var onchange = function(e) {
+        if(!e.originalTarget || e.originalTarget.tagName != 'LI') return true;
+        var scope = this; // caution: closure
+        setTimeout(function() {$(scope).columnizeList(settings);}, 50);
+    };
+    
+    this.one('DOMNodeInserted',onchange);
+    this.one('DOMNodeRemoved',onchange);
+    
+    return this;
+};
+
+jQuery.fn.uncolumnizeList = function(){
+    $('li',this).each(function(i) {
+        if(!$(this).attr('style')) return;
+        $(this).attr('style', 
+            $(this).attr('style')
+            .replace(/margin\-left[^,]*/g,'')
+            .replace(/margin\-top[^,]*/g,'')
+        );
+    });
+    $('ul',this).each(function(i) {
+        if(!$(this).attr('style')) return;
+        $(this).attr('style', 
+            $(this).attr('style')
+            .replace(/[^-]height[^,]*/g,'')
+        );
+    });
+    $(this).height('auto');
+    this.unbind('DOMNodeInserted');
+    this.unbind('DOMNodeRemoved');
+    
+    return this;
+}
+</code></pre>
+</div>
+<footer>
+</footer>
+</article>
+</section>
+</div>
+<footer class=footer>
+<section class=container>
+©
+2005 -
+2021
+Ingo Schommer
+· <a href=mailto:me@chillu.com>Contact</a>
+·
+Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.
+</section>
+</footer>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</body>
+</html>
