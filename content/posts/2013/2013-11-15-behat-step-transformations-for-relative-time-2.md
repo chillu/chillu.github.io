@@ -1,7 +1,7 @@
 ---
 date: "2013-11-15T13:54:00+00:00"
 draft: false
-tags: ["behat silverstripe"]
+tags: ["silverstripe", "testing"]
 title: "Behat Step Transformations for Relative Time"
 ---
 <p>I've been playing around with "Specification By Example" style tests for a while now, but really kicked things off while <a href="http://www.silverstripe.org/gsoc-2012-results-are-in-6x-awesomeness/">mentoring</a> a <a href="github.com/silverstripe-labs/silverstripe-behat-extension">Behat+SilverStripe integration</a>&nbsp;at Google Summer of Code 2013. The <a href="http://silverstripe.org">SilverStripe CMS</a>&nbsp;UI is a complex beast, so it requires frequent additions to our Behat context. Today I've come across an interesting problem with relative dates: We want to test that a CMS report only shows recently edited pages, without hardcoding any dates. We came up with the following feature:</p>
