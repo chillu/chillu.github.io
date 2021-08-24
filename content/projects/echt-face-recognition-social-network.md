@@ -3,6 +3,7 @@ title: "Echt: A social network based on face recognition"
 date: 2017-12-01
 draft: false
 externalUrl: "https://github.com/bnolan/echt-server"
+tags: ["nodejs", "serverless", "react", "machinelearning"]
 ---
 
 On Github: [server](https://github.com/bnolan/echt-server) and [client](https://github.com/bnolan/echt-client)

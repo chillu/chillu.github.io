@@ -3,6 +3,7 @@ title: "Property Trends Analysis Dashboard"
 date: "2018-05-01"
 draft: false
 externalUrl: "https://github.com/chillu/property-viewer-shiny-dashboard"
+tags: ["r", "data"]
 ---
 
 [https://github.com/chillu/property-viewer-shiny-dashboard](https://github.com/chillu/property-viewer-shiny-dashboard)

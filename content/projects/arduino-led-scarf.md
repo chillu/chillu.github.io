@@ -3,6 +3,7 @@ title: "Arduino Led Scarf"
 date: 2017-01-01
 draft: false
 externalUrl: "https://github.com/chillu/arduino-led-scarf"
+tags: ["diy", "arduino"]
 ---
 
 [https://github.com/chillu/arduino-led-scarf](https://github.com/chillu/arduino-led-scarf)

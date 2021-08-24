@@ -3,6 +3,7 @@ title: "Github Contribution Dashboard"
 date: 2014-06-01
 draft: false
 externalUrl: "https://github.com/chillu/github-dashing"
+tags: ["ruby", "data"]
 ---
 
 [https://github.com/chillu/github-dashing](https://github.com/chillu/github-dashing)

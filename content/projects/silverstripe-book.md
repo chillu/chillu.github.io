@@ -3,6 +3,7 @@ title: "Book: Silverstripe - The Complete Guide to CMS Development"
 date: "2009-01-01"
 draft: false
 externalUrl: "http://www.amazon.com/Silverstripe-The-Complete-Guide-Development/dp/0470681837/"
+tags: ["silverstripe"]
 ---
 
 Authored the first (paper!) [book about Silverstripe CMS](http://www.amazon.com/Silverstripe-The-Complete-Guide-Development/dp/0470681837/), with thousands of copies sold. The book was originally

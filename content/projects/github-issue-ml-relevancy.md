@@ -3,6 +3,7 @@ title: "Github Issue Ml Relevancy"
 date: 2020-10-01
 draft: false
 externalUrl: "https://github.com/chillu/github-issue-ml-relevancy"
+tags: ["python", "serverless", "machinelearning"]
 ---
 
 [https://github.com/chillu/github-issue-ml-relevancy](https://github.com/chillu/github-issue-ml-relevancy)
