@@ -21,7 +21,8 @@ Data is stored in AWS DynamoDB, although the NoSQL aspects (e.g. secondary index
 Face recognition is performed through [AWS Rekognition](https://aws.amazon.com/rekognition/).
 
 The client uses [React Native](https://facebook.github.io/react-native/) for a smooth
-end user experience. We learned lots about an iOS development workflow overlaid with
+end user experience, with [MobX](https://mobx.js.org) for state management.
+We learned lots about an iOS development workflow overlaid with
 a web development workflow (leaky abstractions...). And realised that the learning curve
 becomes pretty steep if one of the iOS/Javascript bridges don't work as expected.
 In our case the chosen camera plugin for React Native really didn't like 

@@ -14,7 +14,7 @@ The [Silverstripe CMS](https://addons.silverstripe.org) "core" recipe is compose
 individual modules, each with their own repository and issue tracker. This makes bug identification
 and triage harder than necessary. Thankfully Github has a fantastic [GraphQL API](https://docs.github.com/en/graphql)
 with a versatile search endpoint. I've started this project on a Hackday,
-and with the help of a few [collaborators](https://github.com/silverstripe/github-issue-search-client/graphs/contributors),
+and with the help of a few talented [collaborators](https://github.com/silverstripe/github-issue-search-client/graphs/contributors),
 it is still in active use years later.
 
 Check out the [live application](http://silverstripe-issue-tracker.silverstripe.org/),
