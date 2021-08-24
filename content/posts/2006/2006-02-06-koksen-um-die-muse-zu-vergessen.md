@@ -1,7 +1,6 @@
 ---
 date: "2006-02-06T03:19:00+00:00"
 draft: false
-tags: ["deutsch"]
 title: "Koksen um die Mäuse zu vergessen"
 ---
 ![.](http://chillu.com/assets/ru_blume_fliege.jpg ".")

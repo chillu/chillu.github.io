@@ -1,7 +1,6 @@
 ---
 date: "2004-11-09T22:41:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "Jingle Bells *lala*"
 ---
 ![.](http://chillu.com/assets/blog_firstsnow.jpg ".")

@@ -1,7 +1,6 @@
 ---
 date: "2007-10-25T03:01:00+00:00"
 draft: false
-tags: 
 title: "I'm about to produce 9t of CO2 emissions"
 ---
 Leaving Germany next week for more exciting work at

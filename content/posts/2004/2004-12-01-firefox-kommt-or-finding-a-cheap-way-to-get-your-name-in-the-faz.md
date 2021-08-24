@@ -1,7 +1,6 @@
 ---
 date: "2004-12-01T08:27:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "Firefox kommt (or: Finding a cheap way to get your name in the FAZ)"
 ---
 ![.](http://chillu.com/assets/blog_imhere.jpg ".")

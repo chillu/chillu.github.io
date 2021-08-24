@@ -1,7 +1,6 @@
 ---
 date: "2006-05-26T05:02:00+00:00"
 draft: false
-tags: ["english", "apple", "cinema"]
 title: "Insight: Apple-users are also better politicians"
 ---
 Do you still remember

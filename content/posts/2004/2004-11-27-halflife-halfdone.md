@@ -1,7 +1,6 @@
 ---
 date: "2004-11-27T00:37:00+00:00"
 draft: false
-tags: ["english"]
 title: "halflife halfdone"
 ---
 

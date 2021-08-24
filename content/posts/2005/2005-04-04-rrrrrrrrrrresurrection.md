@@ -1,7 +1,6 @@
 ---
 date: "2005-04-04T06:39:00+00:00"
 draft: false
-tags: ["english", "apple"]
 title: "Rrrrrrrrrr...Resurrection"
 ---
 Somehow the mac-gods seem to like me: My powerbook works again!

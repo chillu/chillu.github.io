@@ -1,7 +1,6 @@
 ---
 date: "2005-03-16T08:44:00+00:00"
 draft: false
-tags: ["deutsch"]
 title: "Ähh, wie hieß das nochmal auf Englisch..."
 ---
 So, heute ist Blog-Tag…viel zu schreiben, wenig Zeit. Und immer mit

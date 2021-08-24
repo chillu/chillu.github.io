@@ -1,7 +1,6 @@
 ---
 date: "2005-05-28T23:15:00+00:00"
 draft: false
-tags: ["english", "apple"]
 title: "Mac-Metaphor"
 ---
 Another (previously hardcore-windows) security expert, Winn

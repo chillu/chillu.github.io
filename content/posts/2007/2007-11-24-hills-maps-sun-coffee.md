@@ -1,7 +1,6 @@
 ---
 date: "2007-11-24T21:59:00+00:00"
 draft: false
-tags: 
 title: "Hills, maps, sun & coffee"
 ---
 A quick uncoherent summary of what I’m up to down under: Last week

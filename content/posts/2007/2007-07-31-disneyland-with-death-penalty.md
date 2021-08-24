@@ -1,7 +1,6 @@
 ---
 date: "2007-07-31T22:08:00+00:00"
 draft: false
-tags: ["english"]
 title: "Disneyland with death penalty"
 ---
 On the way back to Germany I had a little “asia-preview” by staying

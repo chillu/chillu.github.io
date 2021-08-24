@@ -1,7 +1,6 @@
 ---
 date: "2007-10-03T05:14:00+00:00"
 draft: false
-tags: ["diy"]
 title: "The €2 Laptop Stand"
 ---
 ![image](images/IMG_0911.jpg)

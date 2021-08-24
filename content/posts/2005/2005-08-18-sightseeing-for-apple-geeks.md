@@ -1,7 +1,6 @@
 ---
 date: "2005-08-18T14:59:00+00:00"
 draft: false
-tags: ["english", "travel", "apple"]
 title: "Sightseeing for Apple-Geeks"
 ---
 ![.](http://chillu.com/assets/IMG_2728.jpg ".")

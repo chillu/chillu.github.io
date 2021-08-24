@@ -1,7 +1,6 @@
 ---
 date: "2004-12-26T01:26:00+00:00"
 draft: false
-tags: ["english", "omg"]
 title: "Kickin' Christmas"
 ---
 Merry Xmas! Hope you all got through these days without big

@@ -1,7 +1,6 @@
 ---
 date: "2007-11-06T20:02:00+00:00"
 draft: false
-tags: 
 title: "Sign language for beginners"
 ---
 One of the few practical side-effects about New Zealand being on

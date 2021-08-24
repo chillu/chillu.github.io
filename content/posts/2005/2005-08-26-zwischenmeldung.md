@@ -1,7 +1,6 @@
 ---
 date: "2005-08-26T13:03:00+00:00"
 draft: false
-tags: ["travel", "deutsch"]
 title: "Zwischenmeldung"
 ---
 ![.](http://chillu.com/assets/IMG_2905.jpg ".")

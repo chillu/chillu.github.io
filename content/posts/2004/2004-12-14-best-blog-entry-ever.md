@@ -1,7 +1,6 @@
 ---
 date: "2004-12-14T10:30:00+00:00"
 draft: false
-tags: ["english", "omg"]
 title: "Best Blog-Entry ever"
 ---
 One of my definitive nominees is:

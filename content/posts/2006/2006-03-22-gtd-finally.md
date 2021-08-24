@@ -1,7 +1,6 @@
 ---
 date: "2006-03-22T05:07:00+00:00"
 draft: false
-tags: ["english", "gtd"]
 title: "GTD, finally"
 ---
 ![.](http://chillu.com/assets/blog_nextaction2_02.jpg ".")

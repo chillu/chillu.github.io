@@ -1,7 +1,6 @@
 ---
 date: "2005-03-06T05:02:00+00:00"
 draft: false
-tags: ["english", "omg"]
 title: "Warning: Dangerous Links included"
 ---
 Surfing around on a lazy sunday, I found a couple of links I’d like

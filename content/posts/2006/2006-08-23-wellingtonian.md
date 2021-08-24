@@ -1,7 +1,6 @@
 ---
 date: "2006-08-23T22:01:00+00:00"
 draft: false
-tags: ["travel", "nz", "deutsch"]
 title: "Wellingtonian"
 ---
 ![.](http://chillu.com/assets/blog_oroungoroungo.jpg ".")

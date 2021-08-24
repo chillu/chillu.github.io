@@ -1,7 +1,6 @@
 ---
 date: "2006-03-15T12:25:00+00:00"
 draft: false
-tags: ["english", "development"]
 title: "Finetuning"
 ---
 Trying to develop after the open-source-principle “Publish early

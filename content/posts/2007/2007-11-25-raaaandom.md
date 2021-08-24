@@ -1,7 +1,6 @@
 ---
 date: "2007-11-25T18:16:00+00:00"
 draft: false
-tags: 
 title: "Raaaandom!"
 ---
 Randomness #1: Turns out we were (involuntarily) following the

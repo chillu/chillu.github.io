@@ -1,7 +1,6 @@
 ---
 date: "2005-10-24T01:56:00+00:00"
 draft: false
-tags: ["deutsch", "life"]
 title: "Blackboard-Odyssee"
 ---
 Aus aktuellem Anlass mal eine kleine Geschichte aus dem allseits

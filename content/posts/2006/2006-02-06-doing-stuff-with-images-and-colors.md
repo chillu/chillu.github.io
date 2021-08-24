@@ -1,7 +1,6 @@
 ---
 date: "2006-02-06T08:09:00+00:00"
 draft: false
-tags: ["english", "apple", "development"]
 title: "Doing stuff with images and colors"
 ---
 Yay, my first OSX-application is ready: “ColorThing” – the outcome

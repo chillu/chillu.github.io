@@ -1,7 +1,6 @@
 ---
 date: "2007-03-10T10:03:00+00:00"
 draft: false
-tags: ["english", "social web", "aggregation"]
 title: "Tasty flowers"
 ---
 After all the talk about “the real life” on my blog, it is clearly

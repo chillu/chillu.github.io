@@ -1,7 +1,6 @@
 ---
 date: "2005-04-02T09:27:00+00:00"
 draft: false
-tags: ["english", "life", "apple"]
 title: "Krrrt-Krrrt-Tack-Tack"
 ---
 The sound of a dying harddrive – more frightening to every

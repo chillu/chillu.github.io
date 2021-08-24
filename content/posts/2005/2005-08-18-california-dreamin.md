@@ -1,7 +1,6 @@
 ---
 date: "2005-08-18T14:53:44+00:00"
 draft: false
-tags: 
 title: "California Dreamin'"
 ---
 My Internship at Scholz & Volkmer is over since yesterday, and at

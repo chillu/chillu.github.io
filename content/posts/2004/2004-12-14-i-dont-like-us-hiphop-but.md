@@ -1,7 +1,6 @@
 ---
 date: "2004-12-14T10:36:00+00:00"
 draft: false
-tags: ["english", "music"]
 title: "I don't like US-Hiphop but..."
 ---
 ...this compilation really got onto my iTunes-Hotlist: “Jay-Z vs.

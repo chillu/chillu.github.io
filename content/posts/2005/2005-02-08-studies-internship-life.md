@@ -1,7 +1,6 @@
 ---
 date: "2005-02-08T22:38:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "Studies, Internship, (Life)"
 ---
 As a result of the last few months (with rare blog-entries), I

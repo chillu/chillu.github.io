@@ -1,7 +1,6 @@
 ---
 date: "2007-01-17T22:01:00+00:00"
 draft: false
-tags: ["travel", "nz", "deutsch"]
 title: "Wodyauptu"
 ---
 ![.](http://chillu.com/assets/blog_panorama_hataitai.jpg ".")

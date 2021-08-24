@@ -1,7 +1,6 @@
 ---
 date: "2007-07-31T09:09:00+00:00"
 draft: false
-tags: ["english", "travel"]
 title: "Terra Australis Incognita"
 ---
 Time flies, especially with a fun job in an awesome city on the

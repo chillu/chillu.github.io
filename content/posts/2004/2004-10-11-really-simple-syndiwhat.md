@@ -1,7 +1,6 @@
 ---
 date: "2004-10-11T17:38:00+00:00"
 draft: false
-tags: ["english", "aggregation"]
 title: "Really Simple Syndi...what?"
 ---
 RSS stands for “Really Simple Syndication”, which essentially means

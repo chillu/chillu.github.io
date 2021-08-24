@@ -1,7 +1,6 @@
 ---
 date: "2004-12-01T07:50:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "Only 9:40min fame left"
 ---
 I’m on telly! This afternoon I was sitting unsuspectingly in our

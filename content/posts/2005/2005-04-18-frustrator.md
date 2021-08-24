@@ -1,7 +1,6 @@
 ---
 date: "2005-04-18T07:44:00+00:00"
 draft: false
-tags: ["english", "development"]
 title: "Frustrator"
 ---
 I guess I have to delete one entry from my previous

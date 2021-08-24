@@ -1,7 +1,6 @@
 ---
 date: "2007-09-29T13:40:00+00:00"
 draft: false
-tags: ["development", "colophon", "javascript"]
 title: "JQuery columnizeList Plugin"
 ---
 I've spent a rainy german saturday hacking away on my dusty ol'

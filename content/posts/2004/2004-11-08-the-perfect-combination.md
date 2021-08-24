@@ -1,7 +1,6 @@
 ---
 date: "2004-11-08T03:56:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "The perfect combination"
 ---
 ![.](http://chillu.com/assets/blog_sundown1.jpg ".")

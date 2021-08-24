@@ -1,7 +1,6 @@
 ---
 date: "2006-02-16T20:34:00+00:00"
 draft: false
-tags: ["deutsch"]
 title: "Die gute alte Piemont-Kirsche"
 ---
 Das Magazin Brand Eins fragt sich:

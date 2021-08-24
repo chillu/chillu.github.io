@@ -1,7 +1,6 @@
 ---
 date: "2005-08-31T01:51:00+00:00"
 draft: false
-tags: ["english", "travel"]
 title: "U.S.-Roundup (or how I learned to love american breakfast)"
 ---
 To keep me from falling asleep in mid-day due to jetlag, I’m

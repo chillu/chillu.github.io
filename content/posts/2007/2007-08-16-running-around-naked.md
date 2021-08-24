@@ -1,7 +1,6 @@
 ---
 date: "2007-08-16T22:16:00+00:00"
 draft: false
-tags: 
 title: "Running around naked"
 ---
 Remember the [CSS Naked Day](http://naked.dustindiaz.com)? I’m

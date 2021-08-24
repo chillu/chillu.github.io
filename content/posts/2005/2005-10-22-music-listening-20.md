@@ -1,7 +1,6 @@
 ---
 date: "2005-10-22T10:38:00+00:00"
 draft: false
-tags: ["english", "social web"]
 title: "Music-Listening 2.0"
 ---
 Our parents probably owned a dozen albums that carried them through

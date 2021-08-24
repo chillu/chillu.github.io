@@ -1,7 +1,6 @@
 ---
 date: "2006-10-30T21:14:00+00:00"
 draft: false
-tags: ["travel", "nz", "deutsch"]
 title: "Gummiseile, Hügel, und viele Schafe"
 ---
 ![.](http://chillu.com/assets/IMG_4074.JPG ".")

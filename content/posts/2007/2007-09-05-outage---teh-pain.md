@@ -1,7 +1,6 @@
 ---
 date: "2007-09-05T12:28:00+00:00"
 draft: false
-tags: ["english", "colophon"]
 title: "Outage - Teh PAIN!"
 ---
 Well, switching my blog to [Mephisto](http://www.mephistoblog.com)

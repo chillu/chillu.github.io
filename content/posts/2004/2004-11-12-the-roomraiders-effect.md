@@ -1,7 +1,6 @@
 ---
 date: "2004-11-12T06:27:00+00:00"
 draft: false
-tags: ["english", "aggregation", "life"]
 title: "The Roomraiders-Effect"
 ---
 I’ve just watched MTV’s “Roomraiders” on telly, a dating-show where

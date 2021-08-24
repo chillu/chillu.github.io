@@ -1,7 +1,6 @@
 ---
 date: "2005-09-14T00:49:00+00:00"
 draft: false
-tags: ["deutsch", "life"]
 title: "Was Chillu mit Varnnavikaarangal zu tun hat"
 ---
 ![.](http://chillu.com/assets/Bild_2.png ".")

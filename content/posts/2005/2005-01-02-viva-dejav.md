@@ -1,7 +1,6 @@
 ---
 date: "2005-01-02T06:06:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "VIVA-Dejavú"
 ---
 ![.](http://chillu.com/assets/blog_viva.jpg ".")

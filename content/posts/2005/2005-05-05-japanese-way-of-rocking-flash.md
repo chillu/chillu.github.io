@@ -1,7 +1,6 @@
 ---
 date: "2005-05-05T00:57:00+00:00"
 draft: false
-tags: ["english", "development"]
 title: "Japanese way of rocking Flash"
 ---
 ![.](http://chillu.com/assets/main_webslinky.jpg ".")

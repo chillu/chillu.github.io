@@ -1,7 +1,6 @@
 ---
 date: "2005-04-05T21:16:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "Just another Google Link"
 ---
 I didn’t test Google Maps because somehow it didn’t show up on

@@ -1,7 +1,6 @@
 ---
 date: "2005-06-29T05:49:00+00:00"
 draft: false
-tags: ["deutsch", "life"]
 title: "Live ist doch immer noch am besten..."
 ---
 Jan hat die Woche in seinem neuem Weblog nach den besten

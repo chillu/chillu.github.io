@@ -1,7 +1,6 @@
 ---
 date: "2005-05-20T07:48:00+00:00"
 draft: false
-tags: ["english"]
 title: "Expanding my (non-existent) Blogroll"
 ---
 Two of my fellow Media-Production-colleagues started blogging:

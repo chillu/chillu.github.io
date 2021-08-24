@@ -1,7 +1,6 @@
 ---
 date: "2005-04-13T08:36:00+00:00"
 draft: false
-tags: ["deutsch", "apple"]
 title: "Den Tiger im Tank"
 ---
 Mein Powerbook is zwar weg (doch kaputt, grml), dafür is der Tiger

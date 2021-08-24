@@ -1,7 +1,6 @@
 ---
 date: "2005-05-20T07:49:00+00:00"
 draft: false
-tags: ["english", "books"]
 title: "Books (the analogue stuff with real paper...)"
 ---
 As you may know, I’m currently traveling about three hours a day to

@@ -1,7 +1,6 @@
 ---
 date: "2005-03-20T02:44:00+00:00"
 draft: false
-tags: ["english", "social web"]
 title: "Am I addicted?"
 ---
 ![.](http://chillu.com/assets/blog_threadless.jpg ".")

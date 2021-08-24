@@ -1,7 +1,6 @@
 ---
 date: "2005-04-27T08:12:00+00:00"
 draft: false
-tags: ["english", "social web", "aggregation"]
 title: "My Info-Addiction"
 ---
 Check out my

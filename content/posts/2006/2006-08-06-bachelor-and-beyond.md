@@ -1,7 +1,6 @@
 ---
 date: "2006-08-06T17:10:00+00:00"
 draft: false
-tags: ["english", "life"]
 title: "Bachelor and beyond"
 ---
 It probably took some days and about 20.000km of travel to realize:
