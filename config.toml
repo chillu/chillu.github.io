@@ -1,5 +1,5 @@
 baseURL = "http://www.chillu.com"
-title = "Ingo Schommer"
+title = "chillu.com"
 theme = "hugo-coder"
 
 [params]
@@ -52,11 +52,17 @@ url = "https://www.linkedin.com/in/ingoschommer/"
 
 [[params.social]]
 name = "RSS"
-icon = "fa fa-rss"
+icon = "fa fa-envelope"
 weight = 6
 url = "https://chillu.com/index.xml"
 rel = "alternate"
 type = "application/rss+xml"
+
+[[params.social]]
+name = "Email"
+icon = "fa fa-email"
+weight = 8
+url = "mailto:me@chillu.com"
 
 [languages.en]
 languageName = ":uk:"
