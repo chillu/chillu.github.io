@@ -3,7 +3,7 @@ date: "2007-01-06T11:42:00+00:00"
 draft: false
 title: "\"Sommerurlaub\" im Herr-der-Ringe-Land"
 ---
-![.](http://chillu.com/assets/IMG_4235.JPG ".")
+![.](/images/old/IMG_4235.JPG ".")
 
 Weihnachtszeit ist Familienzeit – sogar für temporäre Auswanderer
 wie mich: Meine Eltern und meine kleine Schwester Karolin haben

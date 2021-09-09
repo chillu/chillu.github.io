@@ -3,7 +3,7 @@ date: "2005-08-26T13:03:00+00:00"
 draft: false
 title: "Zwischenmeldung"
 ---
-![.](http://chillu.com/assets/IMG_2905.jpg ".")
+![.](/images/old/IMG_2905.jpg ".")
 
 Nur so
 zwischendurch…[neue Bilder](http://www.flickr.com/photos/73415165@N00)

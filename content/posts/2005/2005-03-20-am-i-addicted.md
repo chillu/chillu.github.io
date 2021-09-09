@@ -3,7 +3,7 @@ date: "2005-03-20T02:44:00+00:00"
 draft: false
 title: "Am I addicted?"
 ---
-![.](http://chillu.com/assets/blog_threadless.jpg ".")
+![.](/images/old/blog_threadless.jpg ".")
 
 I’m just buying my sixth and seventh shirt from
 [threadless.com](http://www.threadless.com). I don’t know if it’s

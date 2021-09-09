@@ -3,7 +3,7 @@ date: "2004-12-01T08:27:00+00:00"
 draft: false
 title: "Firefox kommt (or: Finding a cheap way to get your name in the FAZ)"
 ---
-![.](http://chillu.com/assets/blog_imhere.jpg ".")
+![.](/images/old/blog_imhere.jpg ".")
 
 Look ma, I’m in the FAZ! At least in teeny tiny letters… FAZ means
 “Frankfurter Allgemeine Zeitung”, one of Germany’s biggest daily

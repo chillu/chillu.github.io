@@ -3,7 +3,7 @@ date: "2005-01-02T06:06:00+00:00"
 draft: false
 title: "VIVA-Dejavú"
 ---
-![.](http://chillu.com/assets/blog_viva.jpg ".")
+![.](/images/old/blog_viva.jpg ".")
 
 One more reason to completely dump television: “Fast Forward” is
 discontinued! Tonight at 23:00 Charlotte Roche will make her last
