@@ -3,6 +3,8 @@ date: "2006-10-30T21:14:00+00:00"
 draft: false
 title: "Gummiseile, Hügel, und viele Schafe"
 ---
+![.](http://chillu.com/assets/IMG_4074.JPG ".")
+
 Eigentlich war ich ja noch garnicht richtig in Neuseeland – ich bin
 in Wellington gelandet, und seitdem eigentlich nur auf
 Bürgersteigen, in Büroräumen und Kneipen rumgerannt. Da mussten

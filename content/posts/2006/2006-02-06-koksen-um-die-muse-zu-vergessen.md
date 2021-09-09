@@ -3,6 +3,8 @@ date: "2006-02-06T03:19:00+00:00"
 draft: false
 title: "Koksen um die Mäuse zu vergessen"
 ---
+![.](http://chillu.com/assets/ru_blume_fliege.jpg ".")
+
 Bin grade über den T-Shirt-Shop von
 [Katz&Goldt](http://www.katzundgoldt.de) gestolpert – sehr geil.
 Der Humor ist nicht jedermanns Sache, aber ich lach mich regelmäßig

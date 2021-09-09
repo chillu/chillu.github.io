@@ -3,6 +3,8 @@ date: "2005-05-05T00:57:00+00:00"
 draft: false
 title: "Japanese way of rocking Flash"
 ---
+![.](http://chillu.com/assets/main_webslinky.jpg ".")
+
 Turn up your stereo (preferably with a bad-ass subwoofer), and
 enjoy one of the best Flash-animations I’ve ever seen. It’s called
 [Tokyoplastic](http://www.tokyoplastic.com), a design-group from

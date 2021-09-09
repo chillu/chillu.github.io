@@ -3,6 +3,8 @@ date: "2006-08-23T22:01:00+00:00"
 draft: false
 title: "Wellingtonian"
 ---
+![.](http://chillu.com/assets/blog_oroungoroungo.jpg ".")
+
 Nach drei Wochen Neuseeland bin ich jetzt wohl richtig “angekommen”
 – ich gehe inzwischen auch auf dem Bürgersteig links, zahle jeden
 Cent-Betrag mit Geldkarte und erschrecke mich nicht mehr, wenn

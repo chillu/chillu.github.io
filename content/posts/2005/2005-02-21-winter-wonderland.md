@@ -3,6 +3,7 @@ date: "2005-02-21T01:30:00+00:00"
 draft: false
 title: "Winter Wonderland"
 ---
+![Eingeschneit....](http://chillu.com/assets/blog_winter.jpg "Eingeschneit....")
 
 In the bit of free time between university and the start of my
 internship I’m recovering at home, in good ol’ Hunsrück. And as the
