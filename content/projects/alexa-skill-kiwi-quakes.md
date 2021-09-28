@@ -3,7 +3,7 @@ title: "Alexa Skill for New Zealand Earthquakes"
 date: 2018-01-01
 draft: false
 externalUrl: "https://github.com/chillu/alexa-skill-kiwi-quakes"
-tags: ["nodejs", "serverless", "data"]
+tags: ["nodejs", "serverless", "data", "javascript"]
 ---
 
 [https://github.com/chillu/alexa-skill-kiwi-quakes](https://github.com/chillu/alexa-skill-kiwi-quakes)

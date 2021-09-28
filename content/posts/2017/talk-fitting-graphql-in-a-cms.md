@@ -2,7 +2,7 @@
 title: "Talk: Fitting GraphQL into a CMS data model (Wellington PHP Meetup 2017)"
 date: 2017-02-01
 draft: false
-tags: ["silverstripe", "graphql", "react", "headless"]
+tags: ["silverstripe", "graphql", "react", "headless", "javascript"]
 ---
 
 Lightning talk for the [Wellington PHP Meetup](https://www.meetup.com/PHP-Usergroup-Wellington/),

@@ -2,7 +2,7 @@
 title: "Talk: Silverstripe 4 Technical Roadmap (Stripecon Malta 2017)"
 date: 2017-10-01
 draft: false
-tags: ["silverstripe"]
+tags: ["silverstripe", "architecture"]
 ---
 
 Technical roadmap talk at [Stripecon Malta](https://stripecon.eu) in 2017,

@@ -5,7 +5,7 @@ draft: false
 tags: ["VueJS", "GraphQL", "Serverless"]
 summary: VueJS frontend to aggregate Github issues through their GraphQL API, deployed on Vercel
 externalUrl: "https://github.com/silverstripe/github-issue-search-client"
-tags: ["nodejs", "serverless", "vuejs", "graphql"]
+tags: ["nodejs", "serverless", "vuejs", "graphql", "javascript"]
 ---
 
 [https://github.com/silverstripe/github-issue-search-client](https://github.com/silverstripe/github-issue-search-client)

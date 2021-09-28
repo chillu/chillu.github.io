@@ -3,7 +3,7 @@ title: "Videovote: Simple video suggestion and voting app in Meteor and React"
 date: 2015-10-01
 draft: false
 externalUrl: "https://github.com/chillu/videovote"
-tags: ["nodejs", "react"]
+tags: ["nodejs", "react", "javascript"]
 ---
 
 [https://github.com/chillu/videovote](https://github.com/chillu/videovote)

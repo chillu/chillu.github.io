@@ -2,7 +2,7 @@
 title: "Talk: React and Asset Abstraction in Silverstripe 4 (Silverstripe Meetup)"
 date: 2016-12-01
 draft: false
-tags: ["silverstripe", "react"]
+tags: ["silverstripe", "react", "javascript", "architecture"]
 ---
 
 Roadmap update on the CMS UI redesign, React refactor and

@@ -2,7 +2,15 @@
 title: "Contributions to Silverstripe CMS"
 date: "2021-01-01"
 draft: false
-tags: ["silverstripe"]
+tags: ["silverstripe", "react", "graphql", "javascript", "php", "security", "testing"]
 ---
 
-Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript). Check the [github.com/silverstripe contribution timeline](https://github.com/chillu?tab=overview&org=silverstripe).
+Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript) since 2005 until today. Silverstripe is a product of over a hundred individual repos, and my contributions are scattered among them (see my [github.com/silverstripe contribution timeline](https://github.com/chillu?tab=overview&org=silverstripe)).
+
+There were a few major areas of focus over the years for myself, with the help of many open source contributors:
+
+ * In the late 2000s, we laid the foundations of a PHP MVC framework, with a specific focus on unit and automation testing. I've also written a [book](/projects/silverstripe-book) about it.
+ * In the early 2010s, we built a reasonably cutting edge (for the time!) CMS UI layer on top of jQuery and [Entwine](https://github.com/hafriedlander/jquery.entwine), with a PJAX view layer that's quite similar to [Hotwire](https://hotwired.dev) today (without the websocket goodness)
+ * In the mid 2010s, we refactored parts of the CMS UI to React, Redux and GraphQL (with [Apollo Client](https://www.apollographql.com) and a custom [React component dependency injection layer](https://docs.silverstripe.org/en/4/developer_guides/customising_the_admin_interface/reactjs_redux_and_graphql/)) - see [commits in asset-admin](https://github.com/silverstripe/silverstripe-asset-admin/commits/1/client/?author=chillu) and [commits in cms](https://github.com/silverstripe/silverstripe-cms/commits/398adbb7e8643df2ca668126c0765f6ce2705256/javascript/?author=chillu). This coincided with a lot of careful architecture/management and complex API changes around the Silverstripe 4 major release. My contribution has often been writing RFCs, driving consensus, and ensuring the implementation is useful for both developers and end users (e.g. around a new [asset abstraction layer](https://www.silverstripe.org/blog/4-0-0-beta3-lets-stabilise/))
+ * In the late 2010s, we've focused on security processes, incl. architecting a [Multi Factor Authentication integration](https://www.silverstripe.org/blog/multi-factor-authentication-on-silverstripe/) and rolling it out to dozens of government agencies. The focus of this time was shaping the system into an enterprise-grade product suitable for many larger customers (both private sector and government). 
+ * I've been an early advocate for [Headless CMS](https://www.silverstripe.org/blog/decoupled-body-parts-headless-cms-and-silverstripe/) since giving a [talk](https://vimeo.com/252223843) about all the shiny toys in 2017. My work included the first PoC module for a GraphQL integration into the CMS, and collaborating with the amazing [@unclecheese](http://github.com/unclecheese) on the [module](https://github.com/silverstripe/silverstripe-graphql/) since then (see [commits](https://github.com/silverstripe/silverstripe-graphql/commits/master/?author=chillu))
