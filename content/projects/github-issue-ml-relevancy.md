@@ -1,5 +1,5 @@
 ---
-title: "Github Issue Ml Relevancy"
+title: "Personalised predictions of issue relevancy through machine learning"
 date: 2020-10-01
 draft: false
 externalUrl: "https://github.com/chillu/github-issue-ml-relevancy"
