@@ -6,13 +6,16 @@
 <meta name=color-scheme content="light dark">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
 <meta name=author content="Ingo Schommer">
-<meta name=description content="Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript). Check the github.com/silverstripe contribution timeline.">
+<meta name=description content="Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript) since 2005 until today. Silverstripe is a product of over a hundred individual repos, and my contributions are scattered among them (see my github.com/silverstripe contribution timeline).
+There were a few major areas of focus over the years for myself, with the help of many open source contributors:">
 <meta name=keywords content="blog,developer,personal">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="Contributions to Silverstripe CMS">
-<meta name=twitter:description content="Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript). Check the github.com/silverstripe contribution timeline.">
+<meta name=twitter:description content="Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript) since 2005 until today. Silverstripe is a product of over a hundred individual repos, and my contributions are scattered among them (see my github.com/silverstripe contribution timeline).
+There were a few major areas of focus over the years for myself, with the help of many open source contributors:">
 <meta property="og:title" content="Contributions to Silverstripe CMS">
-<meta property="og:description" content="Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript). Check the github.com/silverstripe contribution timeline.">
+<meta property="og:description" content="Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript) since 2005 until today. Silverstripe is a product of over a hundred individual repos, and my contributions are scattered among them (see my github.com/silverstripe contribution timeline).
+There were a few major areas of focus over the years for myself, with the help of many open source contributors:">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://www.chillu.com/projects/silverstripe/"><meta property="article:section" content="projects">
 <meta property="article:published_time" content="2021-01-01T00:00:00+00:00">
@@ -81,11 +84,43 @@ Contributions to Silverstripe CMS
 <i class="fa fa-tag" aria-hidden=true></i>
 <span class=tag>
 <a href=/tags/silverstripe/>silverstripe</a>
+</span>
+<span class=separator>•</span>
+<span class=tag>
+<a href=/tags/react/>react</a>
+</span>
+<span class=separator>•</span>
+<span class=tag>
+<a href=/tags/graphql/>graphql</a>
+</span>
+<span class=separator>•</span>
+<span class=tag>
+<a href=/tags/javascript/>javascript</a>
+</span>
+<span class=separator>•</span>
+<span class=tag>
+<a href=/tags/php/>php</a>
+</span>
+<span class=separator>•</span>
+<span class=tag>
+<a href=/tags/security/>security</a>
+</span>
+<span class=separator>•</span>
+<span class=tag>
+<a href=/tags/testing/>testing</a>
 </span></div>
 </div>
 </header>
 <div>
-<p>Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript). Check the <a href="https://github.com/chillu?tab=overview&org=silverstripe">github.com/silverstripe contribution timeline</a>.</p>
+<p>Contributed nearly a thousand pull requests and collaborated with hundreds of community members on the many repos making up Silverstripe CMS (PHP and Javascript) since 2005 until today. Silverstripe is a product of over a hundred individual repos, and my contributions are scattered among them (see my <a href="https://github.com/chillu?tab=overview&org=silverstripe">github.com/silverstripe contribution timeline</a>).</p>
+<p>There were a few major areas of focus over the years for myself, with the help of many open source contributors:</p>
+<ul>
+<li>In the late 2000s, we laid the foundations of a PHP MVC framework, with a specific focus on unit and automation testing. I&rsquo;ve also written a <a href=/projects/silverstripe-book>book</a> about it.</li>
+<li>In the early 2010s, we built a reasonably cutting edge (for the time!) CMS UI layer on top of jQuery and <a href=https://github.com/hafriedlander/jquery.entwine>Entwine</a>, with a PJAX view layer that&rsquo;s quite similar to <a href=https://hotwired.dev>Hotwire</a> today (without the websocket goodness)</li>
+<li>In the mid 2010s, we refactored parts of the CMS UI to React, Redux and GraphQL (with <a href=https://www.apollographql.com>Apollo Client</a> and a custom <a href=https://docs.silverstripe.org/en/4/developer_guides/customising_the_admin_interface/reactjs_redux_and_graphql/>React component dependency injection layer</a>) - see <a href="https://github.com/silverstripe/silverstripe-asset-admin/commits/1/client/?author=chillu">commits in asset-admin</a> and <a href="https://github.com/silverstripe/silverstripe-cms/commits/398adbb7e8643df2ca668126c0765f6ce2705256/javascript/?author=chillu">commits in cms</a>. This coincided with a lot of careful architecture/management and complex API changes around the Silverstripe 4 major release. My contribution has often been writing RFCs, driving consensus, and ensuring the implementation is useful for both developers and end users (e.g. around a new <a href=https://www.silverstripe.org/blog/4-0-0-beta3-lets-stabilise/>asset abstraction layer</a>)</li>
+<li>In the late 2010s, we&rsquo;ve focused on security processes, incl. architecting a <a href=https://www.silverstripe.org/blog/multi-factor-authentication-on-silverstripe/>Multi Factor Authentication integration</a> and rolling it out to dozens of government agencies. The focus of this time was shaping the system into an enterprise-grade product suitable for many larger customers (both private sector and government).</li>
+<li>I&rsquo;ve been an early advocate for <a href=https://www.silverstripe.org/blog/decoupled-body-parts-headless-cms-and-silverstripe/>Headless CMS</a> since giving a <a href=https://vimeo.com/252223843>talk</a> about all the shiny toys in 2017. My work included the first PoC module for a GraphQL integration into the CMS, and collaborating with the amazing <a href=http://github.com/unclecheese>@unclecheese</a> on the <a href=https://github.com/silverstripe/silverstripe-graphql/>module</a> since then (see <a href="https://github.com/silverstripe/silverstripe-graphql/commits/master/?author=chillu">commits</a>)</li>
+</ul>
 </div>
 </article>
 </section>
