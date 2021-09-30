@@ -31,7 +31,7 @@ via [Google BigQuery](https://cloud.google.com/bigquery/). We're only interested
 in events related to repositories that the user has previously interacted with.
 In my case, this got the training data set to about 20k rows.
 
-See [notebook/learn.ipynb](notebook/learn.ipynb)
+See [notebook/learn.ipynb](https://github.com/chillu/github-issue-ml-relevancy/blob/master/notebook/learn.ipynb)
 for the BigQuery queries run to retrieve the parameters.
 
 ## Training
@@ -41,7 +41,7 @@ which builds on awesome libraries like [Pytorch](https://pytorch.org/),
 [Scikit Learn](http://scikit-learn.org/) and [Pandas](http://pandas.pydata.org).
 We're training both a Neural Network and a Random Forest.
 
-See [notebook/learn.ipynb](notebook/learn.ipynb)
+See [notebook/learn.ipynb](https://github.com/chillu/github-issue-ml-relevancy/blob/master/notebook/learn.ipynb)
 for a (non-interactive) snapshot of the training process.
 
 ## Prediction Frontend
