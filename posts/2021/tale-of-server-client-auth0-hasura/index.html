@@ -1,0 +1,314 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=color-scheme content="light dark">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+<meta name=author content="Ingo Schommer">
+<meta name=description content="The best and worst aspect of web development is that approaches change reasonably often, and sometimes even for the better! I&rsquo;m catching up on some of these trends:
+ Hybrid rendering: Blurring the lines between client and server with SSR and hydrated state Identity as a service: Handling authentication and authorisation through third party delegation Serverless: Isolated (often stateless) compute on managed infrastructure with great scalability promises Live views: Applications subscribe to data updates rather than waiting for page refreshes GraphQL: Strongly typed APIs with smart servers and clients  They all deserve their own posts.">
+<meta name=keywords content="blog,developer,personal">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="A tale of servers and clients: Auth and rendering with NextJS, Auth0 and Hasura">
+<meta name=twitter:description content="The best and worst aspect of web development is that approaches change reasonably often, and sometimes even for the better! I&rsquo;m catching up on some of these trends:
+ Hybrid rendering: Blurring the lines between client and server with SSR and hydrated state Identity as a service: Handling authentication and authorisation through third party delegation Serverless: Isolated (often stateless) compute on managed infrastructure with great scalability promises Live views: Applications subscribe to data updates rather than waiting for page refreshes GraphQL: Strongly typed APIs with smart servers and clients  They all deserve their own posts.">
+<meta property="og:title" content="A tale of servers and clients: Auth and rendering with NextJS, Auth0 and Hasura">
+<meta property="og:description" content="The best and worst aspect of web development is that approaches change reasonably often, and sometimes even for the better! I&rsquo;m catching up on some of these trends:
+ Hybrid rendering: Blurring the lines between client and server with SSR and hydrated state Identity as a service: Handling authentication and authorisation through third party delegation Serverless: Isolated (often stateless) compute on managed infrastructure with great scalability promises Live views: Applications subscribe to data updates rather than waiting for page refreshes GraphQL: Strongly typed APIs with smart servers and clients  They all deserve their own posts.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.chillu.com/posts/2021/tale-of-server-client-auth0-hasura/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-10-04T16:26:05+12:00">
+<meta property="article:modified_time" content="2021-10-04T16:26:05+12:00">
+<title>
+A tale of servers and clients: Auth and rendering with NextJS, Auth0 and Hasura · chillu.com
+</title>
+<link rel=canonical href=http://www.chillu.com/posts/2021/tale-of-server-client-auth0-hasura/>
+<link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin>
+<link rel=stylesheet href=/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css integrity="sha256-cIaG+KuBdukdRPy+SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.aa883b9ce35a8ff4a2a5008619005175e842bb18a8a9f9cc2bbcf44dab2d91fa.css integrity="sha256-qog7nONaj/SipQCGGQBRdehCuxioqfnMK7z0Tastkfo=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/custom.css>
+<link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16>
+<link rel=apple-touch-icon href=/images/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.88.1">
+</head>
+<body class="preload-transitions colorscheme-dark">
+<div class=float-container>
+<a id=dark-mode-toggle class=colorscheme-toggle>
+<i class="fa fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+chillu.com
+</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle>
+<i class="fa fa-bars fa-fw" aria-hidden=true></i>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/posts/>Blog</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/projects/>Projects</a>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container post">
+<article>
+<header>
+<div class=post-title>
+<h1 class=title>
+<a class=title-link href=http://www.chillu.com/posts/2021/tale-of-server-client-auth0-hasura/>
+A tale of servers and clients: Auth and rendering with NextJS, Auth0 and Hasura
+</a>
+</h1>
+</div>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on>
+<i class="fa fa-calendar" aria-hidden=true></i>
+<time datetime=2021-10-04T16:26:05+12:00>
+October 4, 2021
+</time>
+</span>
+<span class=reading-time>
+<i class="fa fa-clock-o" aria-hidden=true></i>
+10-minute read
+</span>
+</div>
+</div>
+</header>
+<div>
+<p>The best and worst aspect of web development is that approaches change reasonably often,
+and sometimes even for the better! I&rsquo;m catching up on some of these trends:</p>
+<ul>
+<li>Hybrid rendering: Blurring the lines between client and server with SSR and hydrated state</li>
+<li>Identity as a service: Handling authentication and authorisation through third party delegation</li>
+<li>Serverless: Isolated (often stateless) compute on managed infrastructure with great scalability promises</li>
+<li>Live views: Applications subscribe to data updates rather than waiting for page refreshes</li>
+<li>GraphQL: Strongly typed APIs with smart servers and clients</li>
+</ul>
+<p>They all deserve their own posts. This is an attempt to highlight the interplay between these topics,
+with a focus on integration and security rather than implementation.
+I&rsquo;ll be looking specifically at a pretty powerful combo for modern collaborative web applications:
+<a href=https://nextjs.org>NextJS</a> with <a href=https://hasura.io/learn/graphql/nextjs-fullstack-serverless/introduction/>Apollo Client</a>,
+<a href=http://hasura.io>Hasura GraphQL</a>, and <a href=http://auth0.com>Auth0</a>.</p>
+<p>At the end of this post, you&rsquo;ll hopefully have a better understanding about some strengths and weaknesses
+of a &ldquo;hybrid&rdquo; approach to rendering views with authenticated data in this particular stack.
+The specifics described here loosely follow a <a href=https://hasura.io/learn/graphql/nextjs-fullstack-serverless/introduction/>Hasura + NextJS tutorial</a>.</p>
+<p><em>Disclaimer: I have not operated this architecture in production (yet!),
+but learned enough to provide a &ldquo;top-down&rdquo; view of the moving parts</em>.</p>
+<h2 id=components>
+Components
+<a class=heading-link href=#components>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<ul>
+<li><strong>Client Application</strong>: Uses Apollo Client for fetching GraphQL data in the browser, and client-side rendering via NextJS/React and Apollo Client</li>
+<li><strong>App Server</strong>: Uses a set of serverless functions orchestrated by NextJS. Handles server-side rendering (SSR) also via NextJS/React and Apollo Client</li>
+<li><strong>API Server</strong>: Uses Hasura, a GraphQL API server handling authorisation, but not authentication.</li>
+<li><strong>App Database</strong>: Uses a standard Postgres instance, with a schema managed and queried by Hasura</li>
+<li><strong>Identity Provider</strong>: Uses Auth0, an Identity-as-a-Service provider.</li>
+<li><strong>User Data</strong>: Auth0 has its own identity store, where you can access user metadata that&rsquo;s not specific to your app</li>
+</ul>
+<p><img src=/images/2021-tale-of-server-client-auth0-hasura/architecture.png alt="Architecture diagram"></p>
+<h2 id=graphql-live-views-in-hasura>
+GraphQL live views in Hasura
+<a class=heading-link href=#graphql-live-views-in-hasura>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Hasura &ldquo;wraps around&rdquo; a standard relational database schema, and has a refreshing approach
+to keeping business logic out of this layer: The <a href=https://3factor.app>3-factor app architecture</a>.
+In short, the API layer provides the boilerplate for CRUD and authorisation,
+and can be extended via custom resolvers running in serverless functions elsewhere.
+Instead of providing a broad execution environment or web framework, it enables reliable event streams
+which can also be responded to by separately hosted serverless functions.</p>
+<p>As an example, a restaurant booking would have roughly the following asynchronous flow:</p>
+<ol>
+<li>The client sends a GraphQL mutation with the booking request to Hasura</li>
+<li>The client subscribes to updates on this pending booking request object via GraphQL subscriptions (at some point later)</li>
+<li>Hasura emits event on new booking request record creation</li>
+<li>Event gets picked up by a serverless function which interacts with a third party booking engine</li>
+<li>The result of this custom business logic process is written back to the Hasura-monitored database</li>
+<li>The client receives an update with the new state (e.g. subscription confirmed)</li>
+</ol>
+<p>Serverless isn&rsquo;t a mandatory feature, but having a &ldquo;one function per event type&rdquo; constraint
+keeps the business logic small and cohesive. And if your serverless functions don&rsquo;t rely
+on other more constrained resources (such as writing back to the Hasura-managed database), they&rsquo;ll scale really well!</p>
+<p>While this architecture looks close to traditional queue-based systems, there&rsquo;s a certain simplicity
+in using the database as a queue rather than a separate component. There are lots of traps in relational database queues,
+and Hasura only provides guarantees for <a href=https://hasura.io/event-driven-programming/>&ldquo;at least-once&rdquo; and &ldquo;out of order&rdquo;</a> delivery of messages.
+I haven&rsquo;t used this system in production, but the overall adoption rates of Hasura makes me hopeful that
+they&rsquo;ve solved this well for transactional use cases.</p>
+<h2 id=hybrid-rendering-in-nextjs>
+Hybrid rendering in NextJS
+<a class=heading-link href=#hybrid-rendering-in-nextjs>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>NextJS is a Javascript-based web framework built on top of React.
+By virtue of using Javascript both on the server (NodeJS) and in the browser,
+it blends the boundaries between where data can be fetched and rendered.</p>
+<p>For &ldquo;static&rdquo; content (same for every viewer), it can pre-render pages at build time,
+or in a classic per-request server process. While it can render into <a href=https://nextjs.org/docs/advanced-features/static-html-export>static HTML</a>,
+serving pre-rendered views through its serverless functions
+allows some neat tricks around <a href=https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration>incremental regeneration</a>.</p>
+<p>For &ldquo;dynamic&rdquo; content (e.g. authenticated or otherwise personalised views), pre-rendering usually isn&rsquo;t practical.
+You can use NextJS as a traditional web framework, with per-request server rendering.
+Or you can use it as a static provider of files creating a Single Page App that handles data fetching and rendering on the client.
+Or &mldr; you can do <em>both</em>!</p>
+<h2 id=rendering-graphql-data-on-the-server-and-client-with-apollo>
+Rendering GraphQL data on the server and client with Apollo
+<a class=heading-link href=#rendering-graphql-data-on-the-server-and-client-with-apollo>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Apollo Client can consume GraphQL data in both a server and client context.
+It&rsquo;s somewhat framework agnostic, but has great integration to provide this data to React components.
+Unlike a standard HTTP client, it leverages the GraphQL schema to build up a smart cache.
+In an interactive browser context, this smart cache can be used for
+<a href=https://www.apollographql.com/docs/react/performance/optimistic-ui/>optimistic mutation results</a>,
+updating your view before the server has even processed the state change.
+But it also makes it smart enough to know which queries have already been run,
+and can be retrieved from memory while the real query is still retrieving (potentially new) data in the background.</p>
+<p>Apollo can introspect a React component tree to identify its data requirements expressed in GraphQL queries and fragments
+(via <a href=https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree>getDataFromTree()</a>).
+With this knowledge, it can retrieve all data required for a given view on the server.
+NextJS kicks off this process via a custom <a href=https://nextjs.org/docs/api-reference/data-fetching/getInitialProps>getInitialProps()</a>
+implementation and takes care of the rendering.</p>
+<p>To recap, here&rsquo;s the initial rendering process:</p>
+<ol>
+<li>Client requests initial view from NextJS</li>
+<li>NextJS triggers Apollo to fetch all required data via GraphQL</li>
+<li>Apollo introspects the component tree for data requirements, and executes queries</li>
+<li>NextJS renders the view based on the returned data</li>
+</ol>
+<p>This is where it gets interesting: The data retrieved by Apollo on the server is serialiseable.
+It gets passed to the client, which can rehydrate it and avoid running the same queries again.</p>
+<h2 id=live-views-via-websockets-with-apollo>
+Live views via websockets with Apollo
+<a class=heading-link href=#live-views-via-websockets-with-apollo>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Live views &ldquo;bind&rdquo; to remote data updates, which is especially useful in collaborative multi-user contexts.
+While the GraphQL client (Apollo) acts as a standard HTTP client on the server, in the Hasura approach it
+gets initialised as a websocket client in the browser. This setup allows subscriptions to GraphQL data,
+an essential component of the <a href=https://3factor.app>3-factor app architecture</a>.</p>
+<p>Continuing from the intial rendering process above, here&rsquo;s what it might look like
+to get updated data which are collaboratively edited by other users:</p>
+<ol>
+<li>Server-rendered view is displayed, initial Apollo cache is rehydrated</li>
+<li>A new subscription for some of the viewed data is established via websockets</li>
+<li>Another user or async process triggers a change to the viewed data</li>
+<li>The subscription receives new data</li>
+<li>Apollo updates its internal cache, and triggers re-render on any components relying on this query/subscription</li>
+</ol>
+<p>For simplicity, websockets are also used for &ldquo;standard&rdquo; GraphQL operations (queries and mutations)
+that could be performed via a HTTP client.</p>
+<h2 id=authentication-via-auth0>
+Authentication via Auth0
+<a class=heading-link href=#authentication-via-auth0>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Auth0 is a flexible identity-as-a-service provider, and handles the hard bits of securing
+user information and authentication flows. Most importantly for developers,
+it provides SDKs for every conceivable authentication flow. Since we&rsquo;re buliding an
+(initially) server-rendered web application, we&rsquo;re focusing on OAuth2 for API authorisation tokens
+and OpenID Connect (OIDC) for login tokens.</p>
+<p>In the case of Hasura, the <a href=https://hasura.io/docs/latest/graphql/core/guides/integrations/auth0-jwt.html>recommended integration</a>
+creates or updates &ldquo;shadow&rdquo; user records in the Hasura-managed database on every login request to Auth0.
+These user records will point to a unique identifier assigned by Auth0.</p>
+<p>When Auth0 is asked to issue a token (e.g. through a login action), additional metadata can be added
+to the token identifying the user as well as their role in this application context.
+Most commonly this is implemented through JWT claims in an OAuth2 or OIDC flow.
+Since this information is contained in a signed JWT where only Auth0 holds the private key,
+it can be verified with Auth0&rsquo;s public certificates within the API (Hasura).
+This kind of cryptography is essential to the delegation model between different services,
+especially when they involve untrusted channels and devices.</p>
+<p>There are flows for Single Page Applications that don&rsquo;t require a server environment
+to login and receive an access token that can be used for API access. This can be accomplished
+through <a href=https://github.com/auth0/auth0.js>auth0.js</a> without any knowledge of NextJS. Apart from
+the complexity of securing this process in untrusted environments, it would
+also negate a main driver to fully utilise NextJS: Performing the initial render on the server,
+which would require authenticated requests to the API.</p>
+<p>A server-based authentication flow and render process looks like this:</p>
+<ol>
+<li>Browser requests authenticated resource from NextJS (e.g. a page)</li>
+<li>NextJS determines that a login is required, and initiates an OAuth2 flow (asking for hybrid code/id grants)</li>
+<li>The browser request gets redirected to the Auth0-hosted login screen</li>
+<li>After login, Auth0 invokes the defined server-side callback in the app with a <code>code</code> and <code>id_token</code></li>
+<li>NextJS calls Auth0 to exchange the <code>code</code> for an <code>access_token</code></li>
+<li>NextJS encrypts the resulting information in a session cookie</li>
+<li>NextJS provides the (signed) access token to the browser, where it gets added to localStorage</li>
+</ol>
+<p>There&rsquo;s a great <a href=https://auth0.com/blog/ultimate-guide-nextjs-authentication-auth0/>Auth0 blog post about authenticated NextJS</a>
+to dig through more details.</p>
+<h2 id=api-access-via-a-mix-of-session-cookies-and-jwt-state>
+API access via a mix of session cookies and JWT state
+<a class=heading-link href=#api-access-via-a-mix-of-session-cookies-and-jwt-state>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Did you notice that the access token is stored in two places as part of the authentication flow?</p>
+<ul>
+<li>Session cookie: Because of the stateless nature of serverless, there is often no shared session backend.
+Sending (limited) session information through an encyrpted cookie keeps the architecture simple.
+In our case, the cookie contains the access and id tokens, and is used for server-side rendering.</li>
+<li>Browser localStorage: For client-side rendering, the access token needs to be accessible to Javascript
+in order to form an authenticated request to a third party API (outside of the session cookie domain).</li>
+</ul>
+<p><img src=/images/2021-tale-of-server-client-auth0-hasura/first_render.png alt="First render">
+<img src=/images/2021-tale-of-server-client-auth0-hasura/subsequent_render.png alt="Subsequent render"></p>
+<p>Compared to secured cookies, storing access tokens in the browser increases the security surface through Cross-Site Scripting (XSS)
+and Cross-Site Request Forgery (CSRF). This requires additional care in how the application is built.
+A safer alternative approach is to proxy API requests through the origin server with session cookies.</p>
+<h2 id=conclusion>
+Conclusion
+<a class=heading-link href=#conclusion>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>There are a lot of moving parts here compared to a traditional &ldquo;monolithic&rdquo; approach of many web applications.
+It&rsquo;s an incredibly versatile approach, but also introduces many failure modes that simply don&rsquo;t exist
+in applications where most of these workloads happen in-memory rather than over the network.</p>
+<p>I&rsquo;ve really enjoyed working through the details here. Not having operated this architecture in production,
+its too early to form an opinion, but I have some initial impressions:</p>
+<ul>
+<li><strong>Hybrid rendering</strong>: Rendering Javascript on both the server and the client is pretty neat, and can really improve the user experience (Headless CMS, anyone?). For processing authenticated views, I&rsquo;m unconvinced that the added complexity is worth the payoff. While server-managed authentication is easier to secure, it puts a lot of responsibility back on the developer to understand the context they&rsquo;re acting in (server vs. client). There are scenarios where secrets mistakenly get added to client-side state, or where authenticated views get over-cached and shown to the wrong viewers. At least in this particular stack, authenticated hybrid rendering still feels pretty rough, which is illustrated by the amount of complex <a href=https://hasura.io/learn/graphql/nextjs-fullstack-serverless/apollo-client/>boilerplate code</a> required.</li>
+<li><strong>Identity-as-a-service</strong>: I&rsquo;ve maintained and secured custom authentication and authorisation logic in <a href=https://silverstripe.org>Silverstripe CMS</a> for many years, including handling the security friction that inevitably arises. Hence I&rsquo;m a big fan of dedicated services to help teams focus on building their actual features.</li>
+<li><strong>3-factor app architecture</strong>: I&rsquo;ve spent a lot of time inventing (and re-inventing) a <a href=https://github.com/silverstripe/silverstripe-graphql>GraphQL module for Silverstripe CMS</a> as part of a group of open source maintainers (well, mainly <a href=https://github.com/unclecheese>@unclecheese</a>). Mapping database schemas to an ORM and then scaffolding it into coherent GraphQL types is hard. Especially if you want to reduce boilerplate and keep it performant. Hasura and the architecture it promotes are an intriguing take on decoupling business logic from an API layer that&rsquo;s extremely fast to build with.</li>
+<li><strong>Live views</strong>: Collaboration features are becoming table stakes for many applications on the web. Even the humble personal todo list attracts &ldquo;share edit access&rdquo; features. It can be tough to retrofit a subscription-based architecture into an existing app (again, talking from experience with Silverstripe CMS&mldr;). Live views are the way forward, and both client and server stacks for non-trivial apps need to start accommodating them.</li>
+</ul>
+</div>
+<footer>
+</footer>
+</article>
+</section>
+</div>
+<footer class=footer>
+<section class=container>
+©
+2005 -
+2021
+Ingo Schommer
+· <a href=mailto:me@chillu.com>Contact</a>
+·
+Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.
+</section>
+</footer>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</body>
+</html>
