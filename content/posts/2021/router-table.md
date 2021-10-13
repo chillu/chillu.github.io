@@ -14,7 +14,8 @@ Here's a good rabbit hole for you:
  * How do you mount that router in the table? You buy an aluminium insert plate.
  * How do you attach the router to that plate? You drill very accurate mounting holes.
  * How do you drill those holes? You buy a drill press.
- * How do you mount that drill press? ...
+ * How do you mount that drill press? You build a stand
+ * How do you make precise insets for that stand? You build ... a router table.
 
 As a software developer, I have a sense of appreciation for the recursion
 that is building furniture. Judging by Youtube content, the majority of woodworking
