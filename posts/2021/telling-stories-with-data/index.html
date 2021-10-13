@@ -1,0 +1,311 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=color-scheme content="light dark">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+<meta name=author content="Ingo Schommer">
+<meta name=description content="I&rsquo;ve been a steward for a reasonably large open source community (Silverstripe CMS) for over a decade. My various roles working at the main sponsor of this community (Silverstripe Ltd) put me in a privileged position to talk to many awesome folks in this community, and influence the direction of the product. But along the way, I&rsquo;ve also accumulated a lot of anecdotes, bias and gut feel about the &ldquo;shape&rdquo; of our community and its contributions.">
+<meta name=keywords content="blog,developer,personal">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Analysing community health via Google BigQuery">
+<meta name=twitter:description content="I&rsquo;ve been a steward for a reasonably large open source community (Silverstripe CMS) for over a decade. My various roles working at the main sponsor of this community (Silverstripe Ltd) put me in a privileged position to talk to many awesome folks in this community, and influence the direction of the product. But along the way, I&rsquo;ve also accumulated a lot of anecdotes, bias and gut feel about the &ldquo;shape&rdquo; of our community and its contributions.">
+<meta property="og:title" content="Analysing community health via Google BigQuery">
+<meta property="og:description" content="I&rsquo;ve been a steward for a reasonably large open source community (Silverstripe CMS) for over a decade. My various roles working at the main sponsor of this community (Silverstripe Ltd) put me in a privileged position to talk to many awesome folks in this community, and influence the direction of the product. But along the way, I&rsquo;ve also accumulated a lot of anecdotes, bias and gut feel about the &ldquo;shape&rdquo; of our community and its contributions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.chillu.com/posts/2021/telling-stories-with-data/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-10-12T16:26:05+12:00">
+<meta property="article:modified_time" content="2021-10-12T16:26:05+12:00">
+<title>
+Analysing community health via Google BigQuery · chillu.com
+</title>
+<link rel=canonical href=http://www.chillu.com/posts/2021/telling-stories-with-data/>
+<link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin>
+<link rel=stylesheet href=/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css integrity="sha256-cIaG+KuBdukdRPy+SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.aa883b9ce35a8ff4a2a5008619005175e842bb18a8a9f9cc2bbcf44dab2d91fa.css integrity="sha256-qog7nONaj/SipQCGGQBRdehCuxioqfnMK7z0Tastkfo=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/custom.css>
+<link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16>
+<link rel=apple-touch-icon href=/images/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.88.1">
+</head>
+<body class="preload-transitions colorscheme-dark">
+<div class=float-container>
+<a id=dark-mode-toggle class=colorscheme-toggle>
+<i class="fa fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+chillu.com
+</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle>
+<i class="fa fa-bars fa-fw" aria-hidden=true></i>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/posts/>Blog</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/projects/>Projects</a>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container post">
+<article>
+<header>
+<div class=post-title>
+<h1 class=title>
+<a class=title-link href=http://www.chillu.com/posts/2021/telling-stories-with-data/>
+Analysing community health via Google BigQuery
+</a>
+</h1>
+</div>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on>
+<i class="fa fa-calendar" aria-hidden=true></i>
+<time datetime=2021-10-12T16:26:05+12:00>
+October 12, 2021
+</time>
+</span>
+<span class=reading-time>
+<i class="fa fa-clock-o" aria-hidden=true></i>
+7-minute read
+</span>
+</div>
+<div class=tags>
+<i class="fa fa-tag" aria-hidden=true></i>
+<span class=tag>
+<a href=/tags/data/>data</a>
+</span></div>
+</div>
+</header>
+<div>
+<p>I&rsquo;ve been a steward for a reasonably large open source community (<a href=https://silverstripe.org>Silverstripe CMS</a>) for over a decade.
+My various roles working at the main sponsor of this community (<a href=https://silverstripe.com>Silverstripe Ltd</a>)
+put me in a privileged position to talk to many awesome folks in this community,
+and influence the direction of the product. But along the way, I&rsquo;ve also accumulated
+a lot of anecdotes, bias and gut feel about the &ldquo;shape&rdquo; of our community and its contributions.
+This is especially true when applied to a global community when looking out from our little &ldquo;filter bubble&rdquo;
+at the headquarters in Wellington, New Zealand.</p>
+<p>In 2021, my interests in data wrangling and telling stories with it converged
+with a need for some clarity around the health of this community.
+Using <a href=https://cloud.google.com/bigquery/>Google BigQuery</a> and
+<a href=https://datastudio.google.com>Google Data Studio</a>, I was able to surface
+these complex relationships to a wide range of people, with many surprising insights to myself and others.</p>
+<p>This post focuses on the approach I have taken to gather and present this data set, rather than interpreting the results.
+Since it is 99% based on public data, the <a href=https://datastudio.google.com/reporting/12f5e07c-68e0-43a7-9c07-1696bd5230ec/page/X6jOC>reports</a> is free to view online (updated daily).</p>
+<p><img src=/images/2021-telling-stories-with-data/overview.png alt="Overview of report"></p>
+<h2 id=githubs-data-hoarding>
+Github&rsquo;s Data Hoarding
+<a class=heading-link href=#githubs-data-hoarding>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Github is the preferred tool for many interactions in open source communities,
+especially around code and issues. Thankfully, Github maintains <a href=https://www.gharchive.org>githubarchive.org</a>
+as a &ldquo;long-term memory&rdquo; of these interactions in Google BigQuery. Every time a pull request is opened,
+an issue is closed, or a comment is submitted, it creates a <a href=https://developer.github.com/v3/activity/events/types/>Github event</a>.
+These events are tracked in a public &ldquo;big data&rdquo; set with all of their metadata,
+making it a treasure trove for insights.</p>
+<p>Each entry will have a few extracted columns and a JSON <code>payload</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>[
+  {
+    <span style=color:#e6db74>&#34;id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;16717181616&#34;</span>,
+    <span style=color:#e6db74>&#34;type&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;IssueCommentEvent&#34;</span>,
+    <span style=color:#e6db74>&#34;created_at&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2021-06-09 23:23:02 UTC&#34;</span>,
+    <span style=color:#e6db74>&#34;repo_name&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;silverstripe/silverstripe-framework&#34;</span>,
+    <span style=color:#e6db74>&#34;repo_id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;1318892&#34;</span>,
+    <span style=color:#e6db74>&#34;actor_login&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;chillu&#34;</span>,
+    <span style=color:#e6db74>&#34;actor_id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;111025&#34;</span>,
+    <span style=color:#e6db74>&#34;org_id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;379348&#34;</span>,
+    <span style=color:#e6db74>&#34;org_login&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;silverstripe&#34;</span>,
+    <span style=color:#e6db74>&#34;payload&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;{\&#34;action\&#34;:\&#34;created\&#34;,\&#34;issue\&#34;:{\&#34;url\&#34;:\&#34;https://api.github.com/repos/silverstripe/silverstripe-framework/issues/7509\&#34;,\&#34;id\&#34;:268206263,\&#34;node_id\&#34;:\&#34;MDU6SXNzdWUyNjgyMDYyNjM=\&#34;,\&#34;number\&#34;:7509,\&#34;title\&#34;:\&#34;RFC: Avoid HTTPApplication for CLI\&#34;, /*...*/}}&#34;</span>
+  },
+  <span style=color:#75715e>/* ... */</span>
+]
+</code></pre></div><h2 id=ingesting-the-data>
+Ingesting the data
+<a class=heading-link href=#ingesting-the-data>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Google BigQuery can be introspected with convenient ANSI SQL:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>SELECT</span> 
+  id, 
+  <span style=color:#66d9ef>type</span>, 
+  <span style=color:#f92672>#</span> ...
+  payload
+<span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>githubarchive.<span style=color:#66d9ef>day</span>.<span style=color:#f92672>*`</span>
+<span style=color:#66d9ef>WHERE</span> actor.login <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;chillu&#39;</span>;
+</code></pre></div><p>The challenge is that under the hood, it&rsquo;s a <strong>column-based database</strong> rather than row-based database,
+which was counterintuitive for me as a Postgres and MySQL user.
+A column-based approach scales to extremely large data sets, and provides fast
+reads across them while trading off transactional abilities. This makes it a tool of choice
+for a data warehouse and the resulting analytics rather than wiring it up to your web application.</p>
+<p>The query example above would scan terabytes of data,
+because of the inclusion of the (large) <code>payload</code> column and the lack of indexes in column-based storage.
+Consequently, it would scan far less with a smaller number of columns but the same number of rows.
+In the case of the Github Archive, the <code>payload</code> is where
+all the interesting bits are. And in this service,
+a query of this size would cost approximately $50USD to run <em>once</em>.</p>
+<p><img src=/images/2021-telling-stories-with-data/10tb.png alt="Githubarchive query"></p>
+<p>Since we only care about events from repositories related to Silverstripe,
+a one-off data copy into a separate BigQuery project makes the volumes more manageable at half a million extracted rows.
+From this point, new data is ingested daily into this append-only data set via a
+<a href=https://gist.github.com/chillu/b63cbf19349986f703e74a749ab8c15e#file-0_community-sql>time bound scheduled query</a>.</p>
+<h2 id=shaping-the-data>
+Shaping the data
+<a class=heading-link href=#shaping-the-data>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>One of the principles in modern data science is to strive for <a href=https://www.jstatsoft.org/article/view/v059i10>tidy data</a>:
+Each variable forms a column, each observation forms a row, and each type of observational unit forms a table.
+This has served me well for <a href=/projects/property-trends-dashboard>buying a house with data-driven decisions</a> with R,
+aggregating <a href=/projects/github-issue-ml-relevancy>github issues for machine learning</a> with Python and Pandas data frames,
+as well as many internal data warehouse challenges at Silverstripe Ltd.</p>
+<p>As a first step, the ingested data is enriched with additional metadata,
+and columns extracted from the nested JSON payloads for easier analysis
+(see <a href=https://gist.github.com/chillu/b63cbf19349986f703e74a749ab8c15e#file-1_community_extra-sql>full query</a>).
+This happens without changing the &ldquo;shape&rdquo; of the data/observation,
+and makes the additional columns useable for derived views.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>SELECT</span>
+<span style=color:#66d9ef>c</span>.<span style=color:#f92672>*</span>,
+JSON_EXTRACT_SCALAR(payload, <span style=color:#e6db74>&#39;$.action&#39;</span>) <span style=color:#66d9ef>as</span> action,
+JSON_EXTRACT_SCALAR(payload, <span style=color:#e6db74>&#39;$.ref_type&#39;</span>) <span style=color:#66d9ef>as</span> ref_type,
+<span style=color:#66d9ef>EXTRACT</span>(<span style=color:#66d9ef>YEAR</span> <span style=color:#66d9ef>FROM</span> created_at) <span style=color:#66d9ef>AS</span> created_at_year,
+<span style=color:#66d9ef>IF</span>(sm.github <span style=color:#66d9ef>IS</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>, <span style=color:#66d9ef>TRUE</span>, <span style=color:#66d9ef>FALSE</span>) <span style=color:#66d9ef>AS</span> is_supported_module,
+sm.isCore <span style=color:#66d9ef>AS</span> is_core_module,
+<span style=color:#66d9ef>CASE</span> 
+    <span style=color:#f92672>#</span> Core modules <span style=color:#66d9ef>are</span> a <span style=color:#f92672>*</span>subset<span style=color:#f92672>*</span> <span style=color:#66d9ef>of</span> supported modules
+    <span style=color:#66d9ef>WHEN</span> sm.isCore <span style=color:#66d9ef>THEN</span> <span style=color:#e6db74>&#39;Core Module&#39;</span>
+    <span style=color:#66d9ef>WHEN</span> sm.github <span style=color:#66d9ef>IS</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span> <span style=color:#66d9ef>THEN</span> <span style=color:#e6db74>&#39;Supported Module&#39;</span>
+    <span style=color:#66d9ef>ELSE</span> <span style=color:#e6db74>&#39;Community Module&#39;</span>
+<span style=color:#66d9ef>END</span> <span style=color:#66d9ef>AS</span> module_category
+<span style=color:#f92672>#</span> ...
+<span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>community<span style=color:#f92672>`</span> <span style=color:#66d9ef>c</span>
+<span style=color:#66d9ef>LEFT</span> <span style=color:#66d9ef>JOIN</span> <span style=color:#f92672>`</span>supported_modules<span style=color:#f92672>`</span> sm <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>c</span>.repo_id <span style=color:#f92672>=</span> sm.githubId
+</code></pre></div><p>With these foundations, we can dig into the interesting details.
+Here&rsquo;s an abbreviated example showing first and last interactions
+of a specific user (&ldquo;actor&rdquo;), across all repositories.
+<a href=https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#with_clause>Common table expressions</a> through <code>WITH</code>
+keep things readable, and <a href=https://cloud.google.com/bigquery/docs/reference/standard-sql/analytic-function-concepts>window queries</a>
+make it extremly concise to slice data along a group of rows.
+This view is used to calculate community tenure trends as well as &ldquo;churn&rdquo;.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>WITH</span>
+actor_interactions <span style=color:#66d9ef>AS</span> (
+    <span style=color:#66d9ef>SELECT</span>
+        actor_login,
+        <span style=color:#66d9ef>COUNT</span>(id) OVER(PARTITION <span style=color:#66d9ef>BY</span> actor_login <span style=color:#66d9ef>ORDER</span> <span style=color:#66d9ef>BY</span> created_at <span style=color:#66d9ef>ASC</span> <span style=color:#66d9ef>ROWS</span> <span style=color:#66d9ef>BETWEEN</span> UNBOUNDED PRECEDING <span style=color:#66d9ef>AND</span> UNBOUNDED FOLLOWING) <span style=color:#66d9ef>AS</span> interaction_count,
+        FIRST_VALUE(created_at) OVER(PARTITION <span style=color:#66d9ef>BY</span> actor_login <span style=color:#66d9ef>ORDER</span> <span style=color:#66d9ef>BY</span> created_at <span style=color:#66d9ef>ASC</span> <span style=color:#66d9ef>ROWS</span> <span style=color:#66d9ef>BETWEEN</span> UNBOUNDED PRECEDING <span style=color:#66d9ef>AND</span> UNBOUNDED FOLLOWING) <span style=color:#66d9ef>AS</span> first_interaction_date,
+        LAST_VALUE(created_at) OVER(PARTITION <span style=color:#66d9ef>BY</span> actor_login <span style=color:#66d9ef>ORDER</span> <span style=color:#66d9ef>BY</span> created_at <span style=color:#66d9ef>ASC</span> <span style=color:#66d9ef>ROWS</span> <span style=color:#66d9ef>BETWEEN</span> UNBOUNDED PRECEDING <span style=color:#66d9ef>AND</span> UNBOUNDED FOLLOWING) <span style=color:#66d9ef>AS</span> last_interaction_date,
+        ROW_NUMBER() OVER(PARTITION <span style=color:#66d9ef>BY</span> actor_login <span style=color:#66d9ef>ORDER</span> <span style=color:#66d9ef>BY</span> created_at <span style=color:#66d9ef>ASC</span>) <span style=color:#66d9ef>AS</span> _rn,
+    <span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>community_extra<span style=color:#f92672>`</span> <span style=color:#66d9ef>c</span>
+    <span style=color:#66d9ef>WHERE</span>
+        actor_login <span style=color:#66d9ef>IS</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>
+        <span style=color:#f92672>#</span> <span style=color:#66d9ef>Only</span> <span style=color:#66d9ef>count</span> <span style=color:#e6db74>&#34;substantial&#34;</span> interactions. There<span style=color:#e6db74>&#39;s a lot of noise from single event users, e.g. watching a single repo
+</span><span style=color:#e6db74>        AND type IN (&#39;</span>PushEvent<span style=color:#e6db74>&#39;, &#39;</span>IssueCommentEvent<span style=color:#e6db74>&#39;, &#39;</span>IssuesEvent<span style=color:#e6db74>&#39;, &#39;</span>PullRequestEvent<span style=color:#e6db74>&#39;, &#39;</span>PullRequestReviewEvent<span style=color:#e6db74>&#39;, &#39;</span>PullRequestReviewCommentEvent<span style=color:#e6db74>&#39;, &#39;</span>CommitCommentEvent<span style=color:#e6db74>&#39;)
+</span><span style=color:#e6db74>    ORDER BY first_interaction_date ASC
+</span><span style=color:#e6db74>),
+</span><span style=color:#e6db74>actor_interactions_normalised AS (
+</span><span style=color:#e6db74>    SELECT
+</span><span style=color:#e6db74>    # ...
+</span><span style=color:#e6db74>    FROM actor_interactions
+</span><span style=color:#e6db74>    WHERE _rn = 1
+</span><span style=color:#e6db74>)
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>SELECT
+</span><span style=color:#e6db74>    actor_login,
+</span><span style=color:#e6db74>    interaction_count,
+</span><span style=color:#e6db74>    first_interaction_date,
+</span><span style=color:#e6db74>    last_interaction_date,
+</span><span style=color:#e6db74>    DATE_DIFF(DATE(last_interaction_date), DATE(first_interaction_date), YEAR) AS active_years
+</span><span style=color:#e6db74>FROM actor_interactions_normalised
+</span></code></pre></div><h2 id=telling-the-story>
+Telling the story
+<a class=heading-link href=#telling-the-story>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>I find that the trick with shaping data is knowing when to stop.
+While its convenient to slice and aggregate via SQL,
+at some point you&rsquo;ll try to predict all the permutations of how the data is analysed.
+It needs to be shaped just enough to be understandable by other users (potentially non-technical),
+and in small enough volumes to enable efficient further shaping in more approachable tools
+such as business intelligence software. This is where <a href=https://datastudio.google.com>Google Datastudio</a> comes in
+as a reports creator and viewer.</p>
+<p>Complex shaping such as the actor interaction example from above keep workloads light
+in the reporting view, while producing useful views on semi-raw data.</p>
+<p><img src=/images/2021-telling-stories-with-data/tenure_detail.png alt=Tenure></p>
+<p>By adding metadata such as &ldquo;is supported module&rdquo; to each event
+without grouping on this dimension in SQL, the reporting view can
+filter this on the fly based on interactive user selections
+in permutations that are hard to predict or prescribe.</p>
+<p><img src=/images/2021-telling-stories-with-data/repo_highscores.png alt="Repo highscores"></p>
+<p>Google Datastudio is one of many tools that can be used for this purpose,
+but it obviously works really well with Google BigQuery. The schema
+of any tables and views is exposed automatically, with sensible
+defaults on dimensions and metrics. This is most of the setup required
+to drive the filterable table shown above.</p>
+<p><img src=/images/2021-telling-stories-with-data/authoring.png alt=Authoring></p>
+<p>By combining some inline commentary with auto-updated and interactive data,
+these reports become powerful tools to tell an overarching story, but also for this story
+to evolve over time. Community members will look at this through a different
+lens than their sponsors (often the agencies they work for). Newcomers will
+dig for different insights than old hats.</p>
+<h2 id=conclusion>
+Conclusion
+<a class=heading-link href=#conclusion>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>In this particular situation, I was fortunate to be embedded in a business and community
+where I had both the need for data-driven insights, as well as the resources
+and skills to get the required foundations in place. 90% of &ldquo;data science&rdquo; seems to
+be the retrieval and shaping of data, rather than its interpretation.
+It&rsquo;s often not the most glamorous work, but worth it to tell the story.
+This is especially true when it leads to conversations with folks who wouldn&rsquo;t be in a position
+to get those insights themselves (due to lack of access or technical skills).</p>
+<p>I&rsquo;d like to thank <a href=https://dri.es>Dries Buytaert</a>,
+the &ldquo;founding father&rdquo; of Drupal (a CMS in friendly competition with Silverstripe).
+He&rsquo;s built a system over the years to track contributions in their community,
+summarised in annual <a href=https://dri.es/tag/drupal-sponsors>who sponsors Drupal</a> posts.
+This took vision and tenacity, where the resulting data analysis is just the tip of the iceberg.
+And it has inspired me to seek out (albeit more limited) insights in our little corner of the open source ecosystem.</p>
+<p><em>Disclaimer: Unfortunately I can&rsquo;t make the source data derived from gharchive.org
+available to provide full transparency,
+due to limitations on Google BigQuery permissions. I would have to work with Google
+to make it a (sponsored) <a href=https://cloud.google.com/bigquery/public-data/>public data set</a>.
+You&rsquo;re welcome to derive a very similar data set based on the
+<a href=https://gist.github.com/chillu/b63cbf19349986f703e74a749ab8c15e>queries used</a>,
+or contact me to collaborate and clarify.</em></p>
+</div>
+<footer>
+</footer>
+</article>
+</section>
+</div>
+<footer class=footer>
+<section class=container>
+©
+2005 -
+2021
+Ingo Schommer
+· <a href=mailto:me@chillu.com>Contact</a>
+·
+Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.
+</section>
+</footer>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</body>
+</html>
