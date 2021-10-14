@@ -105,8 +105,16 @@ _TABLE_SUFFIX = SUBSTR(
   ), 
   2
 )
+AND repo.name IN (
+  '3Dgoo/silverstripe-hcaptcha',
+  '3Dgoo/silverstripe-instagram-scraper',
+  -- ...
+)
 ```
 
+The source for all ~3k repos in the `repo.name` filter is [addons.silverstripe.org](https://addons.silverstripe.org),
+which auto-discovers new repos based on their package name in PHP's package manager ([packagist.org](https://packagist.org)).
+At the moment, the discovered repos need to be manually extracted and added to the query body.
 ## Shaping the data
 
 One of the principles in modern data science is to strive for [tidy data](https://www.jstatsoft.org/article/view/v059i10):
