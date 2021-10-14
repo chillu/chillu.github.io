@@ -33,7 +33,7 @@ an issue is closed, or a comment is submitted, it creates a [Github event](https
 These events are tracked in a public "big data" set with all of their metadata,
 making it a treasure trove for insights.
 
-Each entry will have a few extracted columns and a JSON `payload`:
+Each entry will have a few pre-extracted columns and the remainder of the event as a big JSON `payload`:
 
 ```js
 [
@@ -41,12 +41,12 @@ Each entry will have a few extracted columns and a JSON `payload`:
     "id": "16717181616",
     "type": "IssueCommentEvent",
     "created_at": "2021-06-09 23:23:02 UTC",
-    "repo_name": "silverstripe/silverstripe-framework",
-    "repo_id": "1318892",
-    "actor_login": "chillu",
-    "actor_id": "111025",
-    "org_id": "379348",
-    "org_login": "silverstripe",
+    "repo.name": "silverstripe/silverstripe-framework",
+    "repo.id": "1318892",
+    "actor.login": "chillu",
+    "actor.id": "111025",
+    "org.id": "379348",
+    "org.login": "silverstripe",
     "payload": "{\"action\":\"created\",\"issue\":{\"url\":\"https://api.github.com/repos/silverstripe/silverstripe-framework/issues/7509\",\"id\":268206263,\"node_id\":\"MDU6SXNzdWUyNjgyMDYyNjM=\",\"number\":7509,\"title\":\"RFC: Avoid HTTPApplication for CLI\", /*...*/}}"
   },
   /* ... */
@@ -61,7 +61,7 @@ Google BigQuery can be introspected with convenient ANSI SQL:
 SELECT 
   id, 
   type, 
-  # ...
+  -- ...
   payload
 FROM `githubarchive.day.*`
 WHERE actor.login = 'chillu';
@@ -80,12 +80,32 @@ In the case of the Github Archive, the `payload` is where
 all the interesting bits are. And in this service,
 a query of this size would cost approximately $50USD to run *once*.
 
+
 ![Githubarchive query](/images/2021-telling-stories-with-data/10tb.png)
 
 Since we only care about events from repositories related to Silverstripe,
 a one-off data copy into a separate BigQuery project makes the volumes more manageable at half a million extracted rows.
 From this point, new data is ingested daily into this append-only data set via a
 [time bound scheduled query](https://gist.github.com/chillu/b63cbf19349986f703e74a749ab8c15e#file-0_community-sql).
+
+This query shows another common way to reduce data consumption:
+It limits the scans to a subset of the [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
+based on the date partition. 
+
+```sql
+SELECT 
+  -- ...
+FROM `githubarchive.day.2*`
+WHERE
+-- Date without the leading "2" (workaround to filter out "yesterday" table naming)
+_TABLE_SUFFIX = SUBSTR(
+  FORMAT_DATE(
+    "%Y%m%d", 
+    DATE_ADD(CURRENT_DATE(), INTERVAL -3 DAY)
+  ), 
+  2
+)
+```
 
 ## Shaping the data
 
@@ -115,7 +135,7 @@ CASE
     WHEN sm.github IS NOT NULL THEN 'Supported Module'
     ELSE 'Community Module'
 END AS module_category
-# ...
+-- ...
 FROM `community` c
 LEFT JOIN `supported_modules` sm ON c.repo_id = sm.githubId
 ```
@@ -140,13 +160,13 @@ actor_interactions AS (
     FROM `community_extra` c
     WHERE
         actor_login IS NOT NULL
-        # Only count "substantial" interactions. There's a lot of noise from single event users, e.g. watching a single repo
+        -- Only count "substantial" interactions. There's a lot of noise from single event users, e.g. watching a single repo
         AND type IN ('PushEvent', 'IssueCommentEvent', 'IssuesEvent', 'PullRequestEvent', 'PullRequestReviewEvent', 'PullRequestReviewCommentEvent', 'CommitCommentEvent')
     ORDER BY first_interaction_date ASC
 ),
 actor_interactions_normalised AS (
     SELECT
-    # ...
+    -- ...
     FROM actor_interactions
     WHERE _rn = 1
 )
