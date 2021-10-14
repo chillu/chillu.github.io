@@ -116,18 +116,18 @@ as a &ldquo;long-term memory&rdquo; of these interactions in Google BigQuery. Ev
 an issue is closed, or a comment is submitted, it creates a <a href=https://developer.github.com/v3/activity/events/types/>Github event</a>.
 These events are tracked in a public &ldquo;big data&rdquo; set with all of their metadata,
 making it a treasure trove for insights.</p>
-<p>Each entry will have a few extracted columns and a JSON <code>payload</code>:</p>
+<p>Each entry will have a few pre-extracted columns and the remainder of the event as a big JSON <code>payload</code>:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>[
   {
     <span style=color:#e6db74>&#34;id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;16717181616&#34;</span>,
     <span style=color:#e6db74>&#34;type&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;IssueCommentEvent&#34;</span>,
     <span style=color:#e6db74>&#34;created_at&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2021-06-09 23:23:02 UTC&#34;</span>,
-    <span style=color:#e6db74>&#34;repo_name&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;silverstripe/silverstripe-framework&#34;</span>,
-    <span style=color:#e6db74>&#34;repo_id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;1318892&#34;</span>,
-    <span style=color:#e6db74>&#34;actor_login&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;chillu&#34;</span>,
-    <span style=color:#e6db74>&#34;actor_id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;111025&#34;</span>,
-    <span style=color:#e6db74>&#34;org_id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;379348&#34;</span>,
-    <span style=color:#e6db74>&#34;org_login&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;silverstripe&#34;</span>,
+    <span style=color:#e6db74>&#34;repo.name&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;silverstripe/silverstripe-framework&#34;</span>,
+    <span style=color:#e6db74>&#34;repo.id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;1318892&#34;</span>,
+    <span style=color:#e6db74>&#34;actor.login&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;chillu&#34;</span>,
+    <span style=color:#e6db74>&#34;actor.id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;111025&#34;</span>,
+    <span style=color:#e6db74>&#34;org.id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;379348&#34;</span>,
+    <span style=color:#e6db74>&#34;org.login&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;silverstripe&#34;</span>,
     <span style=color:#e6db74>&#34;payload&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;{\&#34;action\&#34;:\&#34;created\&#34;,\&#34;issue\&#34;:{\&#34;url\&#34;:\&#34;https://api.github.com/repos/silverstripe/silverstripe-framework/issues/7509\&#34;,\&#34;id\&#34;:268206263,\&#34;node_id\&#34;:\&#34;MDU6SXNzdWUyNjgyMDYyNjM=\&#34;,\&#34;number\&#34;:7509,\&#34;title\&#34;:\&#34;RFC: Avoid HTTPApplication for CLI\&#34;, /*...*/}}&#34;</span>
   },
   <span style=color:#75715e>/* ... */</span>
@@ -142,8 +142,8 @@ Ingesting the data
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>SELECT</span> 
   id, 
   <span style=color:#66d9ef>type</span>, 
-  <span style=color:#f92672>#</span> ...
-  payload
+  <span style=color:#75715e>-- ...
+</span><span style=color:#75715e></span>  payload
 <span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>githubarchive.<span style=color:#66d9ef>day</span>.<span style=color:#f92672>*`</span>
 <span style=color:#66d9ef>WHERE</span> actor.login <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;chillu&#39;</span>;
 </code></pre></div><p>The challenge is that under the hood, it&rsquo;s a <strong>column-based database</strong> rather than row-based database,
@@ -162,7 +162,22 @@ a query of this size would cost approximately $50USD to run <em>once</em>.</p>
 a one-off data copy into a separate BigQuery project makes the volumes more manageable at half a million extracted rows.
 From this point, new data is ingested daily into this append-only data set via a
 <a href=https://gist.github.com/chillu/b63cbf19349986f703e74a749ab8c15e#file-0_community-sql>time bound scheduled query</a>.</p>
-<h2 id=shaping-the-data>
+<p>This query shows another common way to reduce data consumption:
+It limits the scans to a subset of the <a href=https://cloud.google.com/bigquery/docs/partitioned-tables>partitioned tables</a>
+based on the date partition.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>SELECT</span> 
+  <span style=color:#75715e>-- ...
+</span><span style=color:#75715e></span><span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>githubarchive.<span style=color:#66d9ef>day</span>.<span style=color:#ae81ff>2</span><span style=color:#f92672>*`</span>
+<span style=color:#66d9ef>WHERE</span>
+<span style=color:#75715e>-- Date without the leading &#34;2&#34; (workaround to filter out &#34;yesterday&#34; table naming)
+</span><span style=color:#75715e></span>_TABLE_SUFFIX <span style=color:#f92672>=</span> SUBSTR(
+  FORMAT_DATE(
+    <span style=color:#e6db74>&#34;%Y%m%d&#34;</span>, 
+    DATE_ADD(<span style=color:#66d9ef>CURRENT_DATE</span>(), INTERVAL <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span> <span style=color:#66d9ef>DAY</span>)
+  ), 
+  <span style=color:#ae81ff>2</span>
+)
+</code></pre></div><h2 id=shaping-the-data>
 Shaping the data
 <a class=heading-link href=#shaping-the-data>
 <i class="fa fa-link" aria-hidden=true></i>
@@ -191,8 +206,8 @@ sm.isCore <span style=color:#66d9ef>AS</span> is_core_module,
     <span style=color:#66d9ef>WHEN</span> sm.github <span style=color:#66d9ef>IS</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span> <span style=color:#66d9ef>THEN</span> <span style=color:#e6db74>&#39;Supported Module&#39;</span>
     <span style=color:#66d9ef>ELSE</span> <span style=color:#e6db74>&#39;Community Module&#39;</span>
 <span style=color:#66d9ef>END</span> <span style=color:#66d9ef>AS</span> module_category
-<span style=color:#f92672>#</span> ...
-<span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>community<span style=color:#f92672>`</span> <span style=color:#66d9ef>c</span>
+<span style=color:#75715e>-- ...
+</span><span style=color:#75715e></span><span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>community<span style=color:#f92672>`</span> <span style=color:#66d9ef>c</span>
 <span style=color:#66d9ef>LEFT</span> <span style=color:#66d9ef>JOIN</span> <span style=color:#f92672>`</span>supported_modules<span style=color:#f92672>`</span> sm <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>c</span>.repo_id <span style=color:#f92672>=</span> sm.githubId
 </code></pre></div><p>With these foundations, we can dig into the interesting details.
 Here&rsquo;s an abbreviated example showing first and last interactions
@@ -212,25 +227,25 @@ actor_interactions <span style=color:#66d9ef>AS</span> (
     <span style=color:#66d9ef>FROM</span> <span style=color:#f92672>`</span>community_extra<span style=color:#f92672>`</span> <span style=color:#66d9ef>c</span>
     <span style=color:#66d9ef>WHERE</span>
         actor_login <span style=color:#66d9ef>IS</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>
-        <span style=color:#f92672>#</span> <span style=color:#66d9ef>Only</span> <span style=color:#66d9ef>count</span> <span style=color:#e6db74>&#34;substantial&#34;</span> interactions. There<span style=color:#e6db74>&#39;s a lot of noise from single event users, e.g. watching a single repo
-</span><span style=color:#e6db74>        AND type IN (&#39;</span>PushEvent<span style=color:#e6db74>&#39;, &#39;</span>IssueCommentEvent<span style=color:#e6db74>&#39;, &#39;</span>IssuesEvent<span style=color:#e6db74>&#39;, &#39;</span>PullRequestEvent<span style=color:#e6db74>&#39;, &#39;</span>PullRequestReviewEvent<span style=color:#e6db74>&#39;, &#39;</span>PullRequestReviewCommentEvent<span style=color:#e6db74>&#39;, &#39;</span>CommitCommentEvent<span style=color:#e6db74>&#39;)
-</span><span style=color:#e6db74>    ORDER BY first_interaction_date ASC
-</span><span style=color:#e6db74>),
-</span><span style=color:#e6db74>actor_interactions_normalised AS (
-</span><span style=color:#e6db74>    SELECT
-</span><span style=color:#e6db74>    # ...
-</span><span style=color:#e6db74>    FROM actor_interactions
-</span><span style=color:#e6db74>    WHERE _rn = 1
-</span><span style=color:#e6db74>)
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>SELECT
-</span><span style=color:#e6db74>    actor_login,
-</span><span style=color:#e6db74>    interaction_count,
-</span><span style=color:#e6db74>    first_interaction_date,
-</span><span style=color:#e6db74>    last_interaction_date,
-</span><span style=color:#e6db74>    DATE_DIFF(DATE(last_interaction_date), DATE(first_interaction_date), YEAR) AS active_years
-</span><span style=color:#e6db74>FROM actor_interactions_normalised
-</span></code></pre></div><h2 id=telling-the-story>
+        <span style=color:#75715e>-- Only count &#34;substantial&#34; interactions. There&#39;s a lot of noise from single event users, e.g. watching a single repo
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>AND</span> <span style=color:#66d9ef>type</span> <span style=color:#66d9ef>IN</span> (<span style=color:#e6db74>&#39;PushEvent&#39;</span>, <span style=color:#e6db74>&#39;IssueCommentEvent&#39;</span>, <span style=color:#e6db74>&#39;IssuesEvent&#39;</span>, <span style=color:#e6db74>&#39;PullRequestEvent&#39;</span>, <span style=color:#e6db74>&#39;PullRequestReviewEvent&#39;</span>, <span style=color:#e6db74>&#39;PullRequestReviewCommentEvent&#39;</span>, <span style=color:#e6db74>&#39;CommitCommentEvent&#39;</span>)
+    <span style=color:#66d9ef>ORDER</span> <span style=color:#66d9ef>BY</span> first_interaction_date <span style=color:#66d9ef>ASC</span>
+),
+actor_interactions_normalised <span style=color:#66d9ef>AS</span> (
+    <span style=color:#66d9ef>SELECT</span>
+    <span style=color:#75715e>-- ...
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>FROM</span> actor_interactions
+    <span style=color:#66d9ef>WHERE</span> _rn <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+)
+
+<span style=color:#66d9ef>SELECT</span>
+    actor_login,
+    interaction_count,
+    first_interaction_date,
+    last_interaction_date,
+    DATE_DIFF(DATE(last_interaction_date), DATE(first_interaction_date), <span style=color:#66d9ef>YEAR</span>) <span style=color:#66d9ef>AS</span> active_years
+<span style=color:#66d9ef>FROM</span> actor_interactions_normalised
+</code></pre></div><h2 id=telling-the-story>
 Telling the story
 <a class=heading-link href=#telling-the-story>
 <i class="fa fa-link" aria-hidden=true></i>
