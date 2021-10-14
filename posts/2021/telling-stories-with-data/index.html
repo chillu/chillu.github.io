@@ -78,7 +78,7 @@ October 12, 2021
 </span>
 <span class=reading-time>
 <i class="fa fa-clock-o" aria-hidden=true></i>
-7-minute read
+8-minute read
 </span>
 </div>
 <div class=tags>
@@ -177,7 +177,15 @@ based on the date partition.</p>
   ), 
   <span style=color:#ae81ff>2</span>
 )
-</code></pre></div><h2 id=shaping-the-data>
+<span style=color:#66d9ef>AND</span> repo.name <span style=color:#66d9ef>IN</span> (
+  <span style=color:#e6db74>&#39;3Dgoo/silverstripe-hcaptcha&#39;</span>,
+  <span style=color:#e6db74>&#39;3Dgoo/silverstripe-instagram-scraper&#39;</span>,
+  <span style=color:#75715e>-- ...
+</span><span style=color:#75715e></span>)
+</code></pre></div><p>The source for all ~3k repos in the <code>repo.name</code> filter is <a href=https://addons.silverstripe.org>addons.silverstripe.org</a>,
+which auto-discovers new repos based on their package name in PHP&rsquo;s package manager (<a href=https://packagist.org>packagist.org</a>).
+At the moment, the discovered repos need to be manually extracted and added to the query body.</p>
+<h2 id=shaping-the-data>
 Shaping the data
 <a class=heading-link href=#shaping-the-data>
 <i class="fa fa-link" aria-hidden=true></i>
