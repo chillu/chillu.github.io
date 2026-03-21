@@ -6,8 +6,6 @@ draft: false
 
 {{< youtube 7S4o8kv4Kr8 >}}
 
-![Slide 1](running-runn-on-a-run.001.jpeg)
-
 Hi, I’m Ingo. I’m the Head of Engineering at Runn, a B2B SaaS startup doing people and project management out of Wellington, and globally distributed.
 
 ![Slide 2](running-runn-on-a-run.002.jpeg)
@@ -72,7 +70,9 @@ The Runn application is running in Docker with some limitations, but the really 
 
 Because when voice is your only interface, friction matters. You probably don’t want it reading out every bash command it wants to run and waiting for manual approval. So there is definitely a certain amount of vibe coding here — along with trust, guardrails, and restricted control inside the sandbox.
 
-![Slide 11](running-runn-on-a-run.011.jpeg)
+<video autoplay loop muted playsinline>
+  <source src="bug.mov" type="video/mp4">
+</video>
 
 For the demo, I picked a bug in a fairly small part of the app. In Runn, you can manage skills and set skill levels. And when you unset them, things blow up.
 
