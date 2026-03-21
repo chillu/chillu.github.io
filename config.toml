@@ -46,10 +46,10 @@ weight = 1
 url = "https://github.com/chillu/"
 
 [[params.social]]
-name = "Twitter"
-icon = "fa fa-twitter"
+name = "Bluesky"
+icon = "fa fa-bluesky"
 weight = 3
-url = "https://twitter.com/chillu/"
+url = "https://bsky.app/profile/chillu.com"
 
 [[params.social]]
 name = "LinkedIn"
@@ -57,18 +57,9 @@ icon = "fa fa-linkedin"
 weight = 4
 url = "https://www.linkedin.com/in/ingoschommer/"
 
-
-[[params.social]]
-name = "RSS"
-icon = "fa fa-envelope"
-weight = 6
-url = "https://chillu.com/index.xml"
-rel = "alternate"
-type = "application/rss+xml"
-
 [[params.social]]
 name = "Email"
-icon = "fa fa-email"
+icon = "fa fa-envelope"
 weight = 8
 url = "mailto:me@chillu.com"
 
