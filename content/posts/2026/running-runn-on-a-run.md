@@ -6,17 +6,17 @@ draft: false
 
 {{< youtube 7S4o8kv4Kr8 >}}
 
-![Slide 1](running-runn-on-a-run/running-runn-on-a-run.001.jpeg)
+![Slide 1](running-runn-on-a-run.001.jpeg)
 
 Hi, I’m Ingo. I’m the Head of Engineering at Runn, a B2B SaaS startup doing people and project management out of Wellington, and globally distributed.
 
-![Slide 2](running-runn-on-a-run/running-runn-on-a-run.002.jpeg)
+![Slide 2](running-runn-on-a-run.002.jpeg)
 
 I like running, which is very on-brand for my job. I occasionally still get to code. And I’m a kid of the ’80s. I grew up with *Blade Runner*, *Hackers*, and David Hasselhoff talking to his watch to call his car, which, honestly, is not that far off the world we live in now.
 
 Lots of things are happening at the moment. Some of them are exciting. So I thought I’d do a slightly experimental, slightly fun talk about what’s possible with AI coding.
 
-![Slide 3](running-runn-on-a-run/running-runn-on-a-run.003.jpeg)
+![Slide 3](running-runn-on-a-run.003.jpeg)
 
 If you look at the last two and a bit years, we started by calling this stuff fancy autocomplete and mostly dismissing it. Lots of code on the screen, and a little helper on the side.
 
@@ -24,19 +24,19 @@ Then we moved into augmented coding: chatting to these agents and having them ge
 
 That’s the current state of play.
 
-![Slide 4](running-runn-on-a-run/running-runn-on-a-run.004.jpeg)
+![Slide 4](running-runn-on-a-run.004.jpeg)
 
 Here's a quote from Steve Yegge that stuck with me: *coding is shifting from writing code to having conversations about it*. I don’t think that’s particularly controversial anymore. He's also the creator of Gastown. If you don't know what that is, consider yourself lucky. Just know that he's a bit of a mad scientist in the AI space.
 
 The kicker is that he said this in October 2024, which was five months before Claude Code was even in preview mode. So that’s a guy living on the edge, for better or worse.
 
-![Slide 5](running-runn-on-a-run/running-runn-on-a-run.005.jpeg)
+![Slide 5](running-runn-on-a-run.005.jpeg)
 
 Then, in a podcast I listened to a few weeks ago, he said that by the end of this year, most people will be programming by talking to a face.
 
 I don’t know about you, but I find the “talking to a face” bit a little hard to imagine. But the talking part made me wonder: how far can you actually take this?
 
-![Slide 6](running-runn-on-a-run/running-runn-on-a-run.006.jpeg)
+![Slide 6](running-runn-on-a-run.006.jpeg)
 
 Voice is already very feasible. It has genuinely changed how I interact with these systems. And it’s about much more than typing faster.
 
@@ -44,13 +44,13 @@ It’s really about interacting with agents at a higher level. You’re trusting
 
 Which also means you’re giving the agent more trust and more autonomy.
 
-![Slide 7](running-runn-on-a-run/running-runn-on-a-run.007.jpeg)
+![Slide 7](running-runn-on-a-run.007.jpeg)
 
 So what’s next? You can already code on your phone. Claude Code just released remote control, so you can leave your laptop at home — or in the office — while you go out for a walk and chat with the agent while it works away on your machine.
 
 You can do this with voice input already. But I wanted to take it one step further and have the machine talk back to me, without looking at the screen at all. Leave the phone in the pocket and go out for a run.
 
-![Slide 8](running-runn-on-a-run/running-runn-on-a-run.008.jpeg)
+![Slide 8](running-runn-on-a-run.008.jpeg)
 
 I’d tried something like this before with a very early-stage open source project called [Happier](https://happier.dev/). That pre-release warning is definitely warranted. Voice in and voice out are among its more experimental features.
 
@@ -58,13 +58,13 @@ It’s trying to be a more remote coding tool: an abstraction layer on top of al
 
 So, yes, it’s been a bit of a journey.
 
-![Slide 9](running-runn-on-a-run/running-runn-on-a-run.009.jpeg)
+![Slide 9](running-runn-on-a-run.009.jpeg)
 
 Very briefly, this is how it hangs together. I’m using the Happier mobile client. That talks to a self-hosted server running on my laptop, which talks to a CLI, which talks to a coding agent — where the real work actually happens.
 
 That, in turn, is wired into a local development copy of the Runn app. And what I’m really interacting with is the [ElevenLabs](https://elevenlabs.io/) voice agent. That handles text-to-speech and speech-to-text, but it also has tools it can call on the Happier server, so it becomes an alternate pathway for the same instructions.
 
-![Slide 10](running-runn-on-a-run/running-runn-on-a-run.010.jpeg)
+![Slide 10](running-runn-on-a-run.010.jpeg)
 
 A quick word on security, because that’s understandably front of mind in the current AI world. This was all running locally, self-hosted. Happier is end-to-end encrypted by design, so the server itself doesn’t actually know what is flowing through it.
 
@@ -72,13 +72,13 @@ The Runn application is running in Docker with some limitations, but the really 
 
 Because when voice is your only interface, friction matters. You probably don’t want it reading out every bash command it wants to run and waiting for manual approval. So there is definitely a certain amount of vibe coding here — along with trust, guardrails, and restricted control inside the sandbox.
 
-![Slide 11](running-runn-on-a-run/running-runn-on-a-run.011.jpeg)
+![Slide 11](running-runn-on-a-run.011.jpeg)
 
 For the demo, I picked a bug in a fairly small part of the app. In Runn, you can manage skills and set skill levels. And when you unset them, things blow up.
 
 Not the hardest bug in the world to identify, but that wasn’t really the point. This was a proof of concept.
 
-![Slide 12](running-runn-on-a-run/running-runn-on-a-run.012.jpeg)
+![Slide 12](running-runn-on-a-run.012.jpeg)
 
 So I showed a two-and-a-half-minute video of how this went. I asked the agent to log into the app and navigate to the Manage section. On the right side of the screen you can see the actual Claude Code responses; what I’m hearing is a paraphrased version coming from the voice agent.
 
@@ -90,7 +90,7 @@ I got it to reproduce the bug by setting and unsetting a skill level. That part 
 
 So I asked, “Alright, what’s the bug?” and the voice agent basically gaslit me by saying it was still checking and would update me shortly. It eventually got there. It fixed the bug. But this may have been the first time I’ve been gaslit in the opposite direction: the machine had already done the work and was pretending it hadn’t.
 
-![Slide 13](running-runn-on-a-run/running-runn-on-a-run.013.jpeg)
+![Slide 13](running-runn-on-a-run.013.jpeg)
 
 ## Takeaways
 
@@ -104,7 +104,7 @@ Fourth, micro-managing AI is absolutely a thing. I could have given Claude Code 
 
 And finally, humans are still on the hook for what runs in prod. Even if the system *could* commit, push, and merge, I wouldn’t tell it to. We still own the code. We still need to understand it. This is a way to get code written, not a way to stop being responsible for it.
 
-![Slide 14](running-runn-on-a-run/running-runn-on-a-run.014.jpeg)
+![Slide 14](running-runn-on-a-run.014.jpeg)
 
 My conclusion is that voice coding is still a bottleneck — especially if you’re relying on voice both ways and not looking at the screen.
 
