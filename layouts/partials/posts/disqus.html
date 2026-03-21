@@ -1,0 +1,4 @@
+{{- $disqus := site.Config.Services.Disqus.Shortname | default "" -}}
+{{- if and (not (eq $disqus "")) (eq (.Params.disableComments | default false) false) -}}
+  {{ template "_internal/disqus.html" . }}
+{{- end -}}
