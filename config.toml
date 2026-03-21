@@ -1,6 +1,10 @@
 baseURL = "http://www.chillu.com"
 title = "chillu.com"
 theme = "hugo-coder"
+buildFuture = true
+
+[markup.goldmark.renderer]
+unsafe = true
 
 [params]
 author = "Ingo Schommer"
