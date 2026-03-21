@@ -78,7 +78,7 @@ For the demo, I picked a bug in a fairly small part of the app. In Runn, you can
 
 Not the hardest bug in the world to identify, but that wasn’t really the point. This was a proof of concept.
 
-![Slide 12](running-runn-on-a-run.012.jpeg)
+{{< youtube xfnbWbynklY >}}
 
 So I showed a two-and-a-half-minute video of how this went. I asked the agent to log into the app and navigate to the Manage section. On the right side of the screen you can see the actual Claude Code responses; what I’m hearing is a paraphrased version coming from the voice agent.
 
