@@ -4,6 +4,8 @@ date: 2026-03-22T00:00:00
 draft: false
 ---
 
+*This is a presentation from [Code Camp 2026](https://www.codecampwellington.nz/speakers/ingo-schommer.html) in Wellington. The video is re-recorded because I forgot to press "record"...*
+
 {{< youtube 7S4o8kv4Kr8 >}}
 
 Hi, I’m Ingo. I’m the Head of Engineering at Runn, a B2B SaaS startup doing people and project management out of Wellington, and globally distributed.
@@ -24,13 +26,13 @@ That’s the current state of play.
 
 ![Slide 4](running-runn-on-a-run.004.jpeg)
 
-Here's a quote from Steve Yegge that stuck with me: *coding is shifting from writing code to having conversations about it*. I don’t think that’s particularly controversial anymore. He's also the creator of Gastown. If you don't know what that is, consider yourself lucky. Just know that he's a bit of a mad scientist in the AI space.
+Here's a [quote](https://developers.slashdot.org/story/24/11/07/1926221/interview-with-programmer-steve-yegge-on-the-future-of-ai-coding) from Steve Yegge that stuck with me: *coding is shifting from writing code to having conversations about it*. I don’t think that’s particularly controversial anymore. He's also the creator of Gastown. If you don't know what that is, consider yourself lucky. Just know that he's a bit of a mad scientist in the AI space.
 
 The kicker is that he said this in October 2024, which was five months before Claude Code was even in preview mode. So that’s a guy living on the edge, for better or worse.
 
 ![Slide 5](running-runn-on-a-run.005.jpeg)
 
-Then, in a podcast I listened to a few weeks ago, he said that by the end of this year, most people will be programming by talking to a face.
+Then, in a [podcast](https://newsletter.pragmaticengineer.com/p/from-ides-to-ai-agents-with-steve) I listened to a few weeks ago, he said that by the end of this year, most people will be programming by talking to a face.
 
 I don’t know about you, but I find the “talking to a face” bit a little hard to imagine. But the talking part made me wonder: how far can you actually take this?
 
@@ -44,7 +46,7 @@ Which also means you’re giving the agent more trust and more autonomy.
 
 ![Slide 7](running-runn-on-a-run.007.jpeg)
 
-So what’s next? You can already code on your phone. Claude Code just released remote control, so you can leave your laptop at home — or in the office — while you go out for a walk and chat with the agent while it works away on your machine.
+So what’s next? You can already code on your phone. Claude Code just released [Remote Control](https://code.claude.com/docs/en/remote-control), so you can leave your laptop at home — or in the office — while you go out for a walk and chat with the agent while it works away on your machine.
 
 You can do this with voice input already. But I wanted to take it one step further and have the machine talk back to me, without looking at the screen at all. Leave the phone in the pocket and go out for a run.
 
